@@ -1,0 +1,26 @@
+Aufgabe 6
+<!--
+- Praktikum DBWT. Autoren:
+- Amelie Petersen, 3650167
+- Nele Mikkelsen, 3661323
+-->
+a) Request/Anfrage:
+   Anfragemethode/Request: GET --> Ressource wird vom Server angefordert, übertragene Daten Teil URL.
+
+   Status Code: 200 OK --> Operation erfolgreich.
+
+   Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,
+   image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+   --> Client unterstützt folgende Formate bei der Antwort:
+   text/html,application/xhtml+xml beide mit Prio 1; application/xml mit Prio 0.9...usw.
+
+   Response:
+
+   Cache-Control: max-age=72359 --> maximale Dauer in Sekunden, die Ressource aktuell ist, Cache kann die Antwort
+   speichern und wiederverwenden, solange sie noch unter diesem "Alter" ist.
+
+   Expires: Sat, 20 Apr 2024 10:22:27 GMT --> Ressource ab diesem Zeitpunkt nicht mehr aktuell.
+   Content-Type: text/html; charset=utf-8 --> MIME Type mit Medientyp text und Subtyp html,
+   Verwendung des UTF-8 - Zeichensatzes
+
+b)

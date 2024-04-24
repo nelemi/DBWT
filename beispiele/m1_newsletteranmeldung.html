@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+- Praktikum DBWT. Autoren:
+- Amelie Petersen, 3650167
+- Nele Mikkelsen, 3661323
+-->
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Newsletteranmeldung</title>
+</head>
+<body style="font-family:'Baskerville Old Face'; font-weight: bold">
+<form action="formdata.html" method="post">
+    <fieldset style="width: 300px; border-radius: 20px">
+        <legend>Anmeldung</legend>
+        <br>
+        <label for="anrede">Anrede</label>
+        <br>
+        <input type="radio" id="anrede" name="anrede" value="frau">Frau
+        <br>
+        <input type="radio" id="anrede" name="anrede" value="herr">Herr
+        <br>
+        <br>
+        <label for="vorname">Vorname*</label>
+        <br>
+        <input type="text" id="vorname" name="vorname" size=30 placeholder="Bitte geben Sie ihren Vornamen ein">
+        <br>
+        <label for="nachname">Nachname*</label>
+        <br>
+        <input type="text" id="nachname" name="nachname" size=30 placeholder="Bitte geben Sie ihren Nachnamen ein">
+        <br>
+        <label for="email">E-mail</label>
+        <br>
+        <input type="text" id="email" name="email" size=30 placeholder="Bitte geben Sie ihre E-mail ein">
+        <br>
+        <br>
+        <label for="int">Benachrichtigungsintervall</label>
+        <br>
+        <select id="int" name="intervall">
+            <option value="1">Tag</option>
+            <option value="2">Woche</option>
+            <option value="3">Monat</option>
+        </select>
+        <br>
+        <br>
+        <input type="checkbox">Datenschutzhinweise gelesen
+        <br>
+        <input type="submit" value="Abschicken">
+        <br>
+        <br>
+        *)Eingaben sind Pflicht
+    </fieldset>
+</form>
+</body>
+</html>
