@@ -5,7 +5,7 @@ Aufgabe 6
 - Nele Mikkelsen, 3661323
 -->
 a) Request/Anfrage:
-   Anfragemethode/Request: GET --> Ressource wird vom Server angefordert, übertragene Daten Teil URL.
+  hhhhhhh Anfragemethode/Request: GET --> Ressource wird vom Server angefordert, übertragene Daten Teil URL.
 
    Status Code: 200 OK --> Operation erfolgreich.
 
