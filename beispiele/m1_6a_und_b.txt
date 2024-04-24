@@ -1,26 +1,57 @@
 Aufgabe 6
-<!--
+
 - Praktikum DBWT. Autoren:
 - Amelie Petersen, 3650167
 - Nele Mikkelsen, 3661323
--->
+
 a) Request/Anfrage:
-  hhhhhhh Anfragemethode/Request: GET --> Ressource wird vom Server angefordert, übertragene Daten Teil URL.
+Anfragemethode/Request: GET --> Ressource wird vom Server angefordert, übertragene Daten Teil URL.
 
-   Status Code: 200 OK --> Operation erfolgreich.
+Status Code: 200 OK --> Operation erfolgreich.
 
-   Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,
-   image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-   --> Client unterstützt folgende Formate bei der Antwort:
-   text/html,application/xhtml+xml beide mit Prio 1; application/xml mit Prio 0.9...usw.
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,
+image/apng,/;q=0.8,application/signed-exchange;v=b3;q=0.7
+--> Client unterstützt folgende Formate bei der Antwort:
+text/html,application/xhtml+xml beide mit Prio 1; application/xml mit Prio 0.9...usw.
 
-   Response:
+Response:
 
-   Cache-Control: max-age=72359 --> maximale Dauer in Sekunden, die Ressource aktuell ist, Cache kann die Antwort
-   speichern und wiederverwenden, solange sie noch unter diesem "Alter" ist.
+Cache-Control: max-age=72359 --> maximale Dauer in Sekunden, die die Ressource aktuell ist, Cache kann die Antwort
+speichern und wiederverwenden, solange sie noch unter diesem "Alter" ist.
 
-   Expires: Sat, 20 Apr 2024 10:22:27 GMT --> Ressource ab diesem Zeitpunkt nicht mehr aktuell.
-   Content-Type: text/html; charset=utf-8 --> MIME Type mit Medientyp text und Subtyp html,
-   Verwendung des UTF-8 - Zeichensatzes
+Expires: Sat, 20 Apr 2024 10:22:27 GMT --> Ressource ab diesem Zeitpunkt nicht mehr aktuell.
+Content-Type: text/html; charset=utf-8 --> MIME Type mit Medientyp text und Subtyp html,
+Verwendung des UTF-8 - Zeichensatzes
 
 b)
+
+Der Request Header ist ziemlich umfangreich und besteht aus mehreren Direktiven, angefangen mit
+
+Accept (siehe oben, gibt Priorität des Dateitypen bzw. Formats an, alle vorangestellten Formate, d.h. in dem Fall
+text/html und application/xhtml+xml haben die höchste Priorität (Defaultwert 1 = oberste Priorität), alles darauffolgende
+hat die nächsthöchste Prio (q=0.9) gibt diese dann an und steht HINTER dem betroffenen Format:
+text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+
+dann Accept-Encoding gibt alle akzeptierten Komprimierungsformate an:
+gzip, deflate, br, zstd
+
+Accept language gibt an, welche Sprachen verwendet werden sollen, in dem Fall immer US-amerikanisches Englisch
+und falls das nicht möglich ist, irgendein anderes Englisch:
+en-US,en;q=0.9
+
+Cache Control gibt die maximal tolerierte Lebensdauer des Caches an (siehe oben)
+
+Connection: keep alive, Netzwerkverbindung bleibt erhalten bzw. aktiv, selbst wenn die Übertragung schon abgeschlossen ist.
+es muss also nicht für jede Anfrage eine neue Verbindung erstellt werden.
+
+Cookies: Phpstorm und alle Zeichen, die folgen (bis zum "=") bilden den Namen des Cookies und alles danch den Wert dessen.
+
+Host: Die Hostadresse und Port nach dem ":"
+
+User Agent: wird vom Client an den Server einer Website gesendet und enthält Details über den Browser und das Betriebssystem, Je nach User Agent werden Websites auf verschiedenen
+Browsern/Geräten unterschiedlich dargestellt.
+
+Der Request Body:
+Zwei Arten der Darstellung, die erste Art sieht man, wenn man in den Entwicklertools unter network auf preview geht.
+Die zweite Art, den Body darzustellen, sieht man, wenn man danach noch auf "view source" klickt und dieser sieht wie folgt aus:
+anrede=frau&vorname=&nachname=&email=&intervall=1
