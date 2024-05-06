@@ -9,7 +9,7 @@ $allergens = [
     11 => 'Gluten',
     12 => 'Krebstiere',
     13 => 'Eier',
-    14 => 'Fisch'
+    14 => 'Fisch',
     17 => 'Milch'
 ];
 
@@ -18,7 +18,7 @@ $meal = [
     'description' => 'Die Süßkartoffeln werden vorsichtig aufgeschnitten und der Frischkäse eingefüllt.',
     'price_intern' => 2.90,
     'price_extern' => 3.90,
-    'allergens' => [11, 13,
+    'allergens' => [11, 13],
     'amount' => 42             // Number of available meals
 ];
 
@@ -38,7 +38,7 @@ $ratings = [
 ];
 
 $showRatings = [];
-if (!empty($_GET[GET_PARAM_SEARCH_TEXT]) {
+if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
     $searchTerm = $_GET[GET_PARAM_SEARCH_TEXT];
     foreach ($ratings as $rating) {
         if (strpos($rating['text'], $searchTerm) !== false) {
@@ -56,7 +56,7 @@ if (!empty($_GET[GET_PARAM_SEARCH_TEXT]) {
     $showRatings = $ratings;
 }
 
-calcMeanStars(array $ratings) : float {
+function calcMeanStars (array $ratings) : float {
     $sum = 1;
     foreach ($ratings as $rating) {
         $sum += $rating['stars'] / count($ratings);
