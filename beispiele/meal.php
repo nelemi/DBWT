@@ -93,6 +93,7 @@ function calcMeanStars (array $ratings) : float {
             <tr>
                 <td>Text</td>
                 <td>Sterne</td>
+                <td>Autor</td>
             </tr>
             </thead>
             <tbody>
@@ -100,10 +101,18 @@ function calcMeanStars (array $ratings) : float {
         foreach ($showRatings as $rating) {
             echo "<tr><td class='rating_text'>{$rating['text']}</td>
                       <td class='rating_stars'>{$rating['stars']}</td>
+                      <td class='rating_text'> {$rating['author']}</td>
                   </tr>";
         }
         ?>
+
             </tbody>
         </table>
+        <ul>
+            <?php
+            foreach ($allergens as $allergen) {
+                echo "<li> $allergen </li>";
+            }?>
+        </ul>
     </body>
 </html>
