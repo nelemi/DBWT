@@ -59,11 +59,20 @@ if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
     $showRatings = $ratings;
 }
 
-if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
-    if ($_GET[GET_SHOW_DESCRIPTION] == '0') {
-        $meal['description'] = ' ';
+function description ($meal) {
+    if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
+        if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
+            return NULL;
+        }
     }
+    else {
+        echo $meal['description'];
 }
+if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
+    if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
+        $meal['description'] = NULL;
+    }
+}}
 function calcMeanStars (array $ratings) : float {
     $sum = 0;
     foreach ($ratings as $rating) {
@@ -77,7 +86,7 @@ function calcMeanStars (array $ratings) : float {
 <html lang="de">
     <head>
         <meta charset="UTF-8"/>
-        <title>Gericht: <?php echo $meal['name']; ?></title>
+        <title>Gericht: <?php description($meal); ?></title>
         <style>
             * {
                 font-family: Arial, serif;
