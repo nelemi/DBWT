@@ -12,4 +12,4 @@ function addieren ($a, $b = 0) {
     }
 
 echo addieren(2, 3);
-
+echo addieren(3);
