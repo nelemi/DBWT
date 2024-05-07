@@ -1,4 +1,12 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Amelie, Petersen, 3661323
+ * Nele, Mikkelsen, 3650167
+ */
+?>
+
+<?php
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
 
