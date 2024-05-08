@@ -78,7 +78,7 @@ function description ($meal) {
 }
 if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
     if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
-        $meal['description'] = NULL;
+        $meal['description'] = "";
     }
 }}
 function calcMeanStars (array $ratings) : float {
