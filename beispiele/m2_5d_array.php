@@ -21,19 +21,19 @@ $famousMeals = [
     <ol>
         <?php
         //implode(",", $famousMeals['winner']);
-        $new = "";
-        foreach ($famousMeals as $meal => $value) {
-            foreach ($famousMeals[$meal] as $mealValue) {
-              $name=  $mealValue;
-              if ($famousMeals[$meal] =='winner'){
-                 foreach ($famousMeals[$meal] as $jahreszahlen) {
-                     $new .= $jahreszahlen;
-                 }
-              }
-              else {
-                  echo $name;
-              }
-            }echo "\n $new" ; //hallo
+        foreach ($famousMeals as $Anzahl => $arrays) {
+            $name = $arrays['name'];
+            $winner = $arrays['winner'];
+            $string_winner = "";
+            if (is_array($winner) ) {
+                $string_winner = implode(',', $winner);
+            }
+            else {
+                $string_winner = strval( $winner );
+            }
+            echo "<li>$name \n $string_winner</li>";
+
+             //hallo
         } ?>
 
     </ol>
