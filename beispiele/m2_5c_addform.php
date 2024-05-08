@@ -6,7 +6,7 @@
  */
 ?>
 <?php
-include 'm2_5a_standardparameter.php';
+include_once 'm2_5a_standardparameter.php';
 const GET_PARAM_ZAHL_A = 'a';
 const GET_PARAM_ZAHL_B= 'b';
 
