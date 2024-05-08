@@ -1,3 +1,8 @@
+<?php echo "Test";
+include 'gerichte_array.php'
+?>
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -153,13 +158,13 @@
             </thead>
             <tbody>
             <tr>
-                <td>Rindfleisch mit Bambus, Kaiserschoten und rotem Paprika, dazu Mie Nudeln</td>
+                <td><?php gerichte($gerichte_array, 0)?></td>
                 <td>3,50</td>
                 <td>6,20
                 </td>
             </tr>
             <tr>
-                <td>Spinatrisotto mit kleinen Samasateigecken und gemischter Salat</td>
+                <td><?php gerichte($gerichte_array, 1)?></td>
                 <td>2,90</td>
                 <td>5,30</td>
             </tr>

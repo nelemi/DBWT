@@ -6,7 +6,7 @@
  */
 ?>
 <?php
-include_once 'm2_5a_standardparameter.php';
+include 'm2_5a_standardparameter.php';
 const GET_PARAM_ZAHL_A = 'a';
 const GET_PARAM_ZAHL_B= 'b';
 
@@ -45,8 +45,11 @@ if (!empty($_GET[GET_PARAM_ZAHL_B])) {
         <?php
         if (isset($_GET[GET_PARAM_ZAHL_A])) {
             if (isset($_GET[GET_PARAM_ZAHL_B])) {
-                if (isset($GET['addieren'])) {
-                    echo addieren($zahl_a, $zahl_b);//wird nie ausgegeben!!!!!
+
+                if (isset($_GET['addieren'])) {
+                    $ergebnis = addieren($zahl_a, $zahl_b);
+
+                    echo $ergebnis;//wird nie ausgegeben!!!!!
                 }
                 elseif (isset($_GET['multiplizieren'])) {
                     echo $zahl_a * $zahl_b;

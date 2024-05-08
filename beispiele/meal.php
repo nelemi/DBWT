@@ -68,19 +68,21 @@ if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
 }
 
 function description ($meal) {
-    if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
-        if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
-            return NULL;
-        }
+    //if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
+    //if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
+    //return NULL;
+    return true;
+     return !(isset($GET[GET_SHOW_DESCRIPTION]) && $_GET[GET_SHOW_DESCRIPTION] == 0);
     }
-    else {
-        echo $meal['description'];
-}
-if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
-    if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
-        $meal['description'] = "";
-    }
-}}
+
+    //else {
+         //echo $meal['description'];
+
+//if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
+    //if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
+        //$meal['description'] = "";
+    //}
+//}}
 function calcMeanStars (array $ratings) : float {
     $sum = 0;
     foreach ($ratings as $rating) {
@@ -94,7 +96,7 @@ function calcMeanStars (array $ratings) : float {
 <html lang="de">
     <head>
         <meta charset="UTF-8"/>
-        <title>Gericht: <?php description($meal); ?></title>
+        <title>Gericht: <?php if (!description($meal)) {echo $meal['description'];}  ?></title>
         <style>
             * {
                 font-family: Arial, serif;
