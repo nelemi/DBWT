@@ -154,6 +154,7 @@ include 'gerichte_array.php'
                 <th></th>
                 <th>Preis intern</th>
                 <th>Preis extern</th>
+                <th>Bild des Gerichts</th>
             </tr>
             </thead>
             <tbody>
@@ -161,22 +162,24 @@ include 'gerichte_array.php'
                 <td><?php echo gerichte()?></td>
                 <td>3,50</td>
                 <td>6,20</td>
-                <td><img src="/werbeseite/img/rindfleisch.png" alt="Rindfleisch mit Bambus"</td>
+                <td><img src="/werbeseite/img/rindfleisch.png" width="100" height="50" alt="Rindfleisch mit Bambus"</td>
             </tr>
             <tr>
                 <td><?php echo gerichte( 1)?></td>
                 <td>2,90</td>
                 <td>5,30</td>
-                <td><img src="/werbeseite/img/spinatrisotto.jpg" alt="Spinatrisotto"</td> </tr>
+                <td><img src="/werbeseite/img/spinatrisotto.jpg" width="100" height="50" alt="Spinatrisotto"</td> </tr>
             <tr>
                 <td><?php echo gerichte(2)?></td>
                 <td>5,00</td>
                 <td>9,50</td>
+                <td><img src="/werbeseite/img/tortellini.jpg" width="100" height="50" alt="Tortellini"</td>
             </tr>
             <tr>
                 <td><?php echo gerichte( 3)?></td>
                 <td>2,50</td>
                 <td>4,80</td>
+                <td><img src="/werbeseite/img/waffeln.jpg" width="100" height="50" alt="Waffeln"</td>
             </tr>
             <tr>
                 <td>...</td>
