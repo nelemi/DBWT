@@ -31,7 +31,7 @@ $famousMeals = [
             else {
                 $string_winner = strval( $winner );
             }
-            echo "<li>$name \n $string_winner</li>";
+            echo "<li>$name <br> $string_winner</li>";
 
              //hallo
         } ?>
