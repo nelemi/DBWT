@@ -161,12 +161,13 @@ include 'gerichte_array.php'
                 <td><?php echo gerichte()?></td>
                 <td>3,50</td>
                 <td>6,20</td>
+                <td><img src="/werbeseite/img/rindfleisch.png" alt="Rindfleisch mit Bambus"</td>
             </tr>
             <tr>
                 <td><?php echo gerichte( 1)?></td>
                 <td>2,90</td>
                 <td>5,30</td>
-            </tr>
+                <td><img src="/werbeseite/img/spinatrisotto.jpg" alt="Spinatrisotto"</td> </tr>
             <tr>
                 <td><?php echo gerichte(2)?></td>
                 <td>5,00</td>
