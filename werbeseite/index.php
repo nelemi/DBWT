@@ -1,4 +1,4 @@
-<?php echo "Test";
+<?php
 include 'gerichte_array.php'
 ?>
 
