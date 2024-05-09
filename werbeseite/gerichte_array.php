@@ -1,16 +1,41 @@
 <?php
 
-$gerichte_array = [ ["Rindfleisch mit Bambus, Kaiserschoten 
-                    und rotem Paprika, dazu Mie Nudeln"],
-                    ["Spinatrisotto mit kleinen Samasateigecken 
-                    und gemischtem Salat"]
-    ];
+function gerichte ($gericht = 0) : string {
+        $gerichte_array = ["Rindfleisch mit Bambus, Kaiserschoten 
+                    und rotem Paprika, dazu Mie Nudeln",
+                    "Spinatrisotto mit kleinen Samasateigecken 
+                    und gemischtem Salat",
+                    "Frische Tortelloni mit Ziegenkäse-Zitronen-
+                    Füllung auf grünem Spargel, verfeinert mit
+                    karamellisierten Walnüssen",
+                    "Belgische Waffeln mit feiner Schokoladensauce, 
+                    saisonalen Früchten und einer Kugel hausgemachtem 
+                    Vanilleeis"
+        ];
 
-function gerichte ($gerichte_array, $gericht = 0) {
-        if (isset($gerichte_array[$gericht]))
-        $ger_array = $gerichte_array[$gericht];{
-
-        }return $ger_array[$gericht];
+        if (array_key_exists($gericht, $gerichte_array)) {
+            return $gerichte_array[$gericht];
+            } else {
+            return $gerichte_array[0];
+        }
 }
-echo gerichte($gerichte_array);
 
+
+
+
+
+
+
+
+
+
+//function gerichte ($gericht = 0) : string {
+    //$gerichte_array = [["Rindfleisch mit Bambus, Kaiserschoten
+          //          und rotem Paprika, dazu Mie Nudeln"],
+        //["Spinatrisotto mit kleinen Samasateigecken
+          //          und gemischtem Salat"]];
+    //if (isset($gerichte_array[$gericht])) {
+      //  $ger_array = $gerichte_array[$gericht];
+    //}return $ger_array;
+//}
+//echo gerichte();

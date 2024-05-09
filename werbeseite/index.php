@@ -27,7 +27,7 @@ include 'gerichte_array.php'
         div.gridcon {
             display: grid;
             border: 1px solid black;
-            height: 150px;
+            height: auto;
         }
         table {
             border-collapse: collapse;
@@ -158,15 +158,24 @@ include 'gerichte_array.php'
             </thead>
             <tbody>
             <tr>
-                <td><?php gerichte($gerichte_array, 0)?></td>
+                <td><?php echo gerichte()?></td>
                 <td>3,50</td>
-                <td>6,20
-                </td>
+                <td>6,20</td>
             </tr>
             <tr>
-                <td><?php gerichte($gerichte_array, 1)?></td>
+                <td><?php echo gerichte( 1)?></td>
                 <td>2,90</td>
                 <td>5,30</td>
+            </tr>
+            <tr>
+                <td><?php echo gerichte(2)?></td>
+                <td>5,00</td>
+                <td>9,50</td>
+            </tr>
+            <tr>
+                <td><?php echo gerichte( 3)?></td>
+                <td>2,50</td>
+                <td>4,80</td>
             </tr>
             <tr>
                 <td>...</td>
