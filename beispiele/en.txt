@@ -1,0 +1,22 @@
+Hey there!
+This is a sample text that I created myself because I could
+not find any file named "en.txt". I hope that's okay and that
+this was what we were supposed to do. I mean you just have to
+see that we're able to complete the tasks, right?
+Anyways, these are some words one could want to translate:
+
+Food
+Horse
+Dog
+Cat
+Happy
+Nails
+Pillow
+Stupid
+Cupid
+Easy
+Mermaid
+Heart
+Sun
+...
+
