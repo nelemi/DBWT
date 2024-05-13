@@ -34,14 +34,14 @@ while (!feof($textdatei)) {
     if ($woerter[0] === $suchwort) {
         $uebersetzung = isset($woerter[1]) ? $woerter[1] : '';
         echo "Die Übersetzung von $suchwort ist $uebersetzung.";
-        $uebersetzungGefunden = true;
+        $uebersetzung_gefunden = true;
         break;
         }
 }
 fclose($textdatei);
 
-//if ($uebersetzung_gefunden === false) {
-  //  echo "Übersetzung für '$suchwort' ist fehlgeschlagen.";
-//}
+if ($uebersetzung_gefunden === false) {
+    echo "Übersetzung für '$suchwort' ist fehlgeschlagen.";
+}
 ?>
 
