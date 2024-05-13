@@ -1,15 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Übersetzung suchen</title>
+</head>
+<body>
+<h2>Gewünschte Übersetzung: </h2>
+<form method="GET">
+    Suchwort: <input type="text" name="suche">
+    <input type="submit" value="Suchen">
+</form>
+</body>
+</html>
+
+
 <?php
 
-$textdatei = 'en.txt';
-$suchwort = $_GET['suche'];
+$textdatei = fopen('./en.txt', 'r');
+const GET_SUCHWORT = 'suche';
 
-if (!empty($suchwort)) {
-    $suchwort = "Horse";
+if (!empty($_GET[GET_SUCHWORT])) {
+    $suchwort = $_GET[GET_SUCHWORT];
+}
+if (!$textdatei) {
+    die('Öffnen fehlgeschlagen');
 }
 
-$datei_inhalt = file_get_contents($textdatei);
-if (strpos($datei_inhalt, $suchwort) !== false) {
-    echo "Das gesuchte Wort '$suchwort' wurde gefunden.";
-} else {
-    echo "Das gesuchte Wort '$suchwort' wurde nicht gefunden.";
+$uebersetzung_gefunden = false;
+
+while (!feof($textdatei)) {
+    $zeile = fgets($textdatei);
+    $woerter = explode(";", $zeile);
+    if ($woerter[0] === $suchwort) {
+        $uebersetzung = isset($woerter[1]) ? $woerter[1] : '';
+        echo "Die Übersetzung von $suchwort ist $uebersetzung.";
+        $uebersetzungGefunden = true;
+        break;
+        }
 }
+fclose($textdatei);
+
+//if ($uebersetzung_gefunden === false) {
+  //  echo "Übersetzung für '$suchwort' ist fehlgeschlagen.";
+//}
+?>
+
