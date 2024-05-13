@@ -100,13 +100,38 @@ if (!empty($_GET[GET_PARAM_SEARCH_TEXT])) {
 } else {
     $showRatings = $ratings;
 }
-
-// Flopp oder Top
-if (!empty($_GET[GET_FLOPP_ODER_TOP])) {
-    if ($_GET[GET_FLOPP_ODER_TOP] == 'flopp') {
-        $python = 0;
+$max = -10000000;
+$min = 10000000;
+$list_of_max = [];
+$list_of_min = [];
+foreach ($ratings as $rating) {
+    if ($rating['stars'] >= $max){
+        $max = $rating['stars'];
+    }
+    if ($rating['stars'] <= $min){
+        $min = $rating['stars'];
     }
 }
+foreach ($ratings as $rating) {
+    if ($rating['stars'] == $max){
+        $list_of_max[] = $rating;
+    }
+    if ($rating['stars'] == $min){
+        $list_of_min[] = $rating;
+    }
+}
+
+// Flopp oder Top
+$flopp_oder_top = "";
+if (!empty($_GET[GET_FLOPP_ODER_TOP])) {
+    if ($_GET[GET_FLOPP_ODER_TOP] == 'flop') {
+      $flopp_oder_top = $list_of_min;
+    }
+    elseif ($_GET[GET_FLOPP_ODER_TOP] == 'top') {
+        $flopp_oder_top = $list_of_max;
+    }
+}
+
 //<?php echo $meal['description']; stand unten bei meal description
 function description ($meal) {
     //if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
@@ -184,5 +209,12 @@ function calcMeanStars (array $ratings) : float {
             }?>
         </ul>
     <p> <?php echo "Preis extern: $preis_extern € <br> Preis intern: $preis_intern €"?></p>
+    <table><?php foreach ($flopp_oder_top as $bewertung) {
+        echo "<tr><td>{$bewertung['text']}</td>
+                      <td> {$bewertung['stars']}</td>
+                      <td> {$bewertung['author']}</td>
+                 </tr>";
+        }?>
+    </table>
     </body>
 </html>
