@@ -1,5 +1,12 @@
 <?php
-include 'gerichte_array.php'
+session_start();
+
+if(!isset($_SESSION['zaehler'])){
+    $_SESSION['zaehler'] = 0;
+}
+$_SESSION['zaehler']++;
+
+include 'gerichte_array.php';
 ?>
 
 
@@ -191,16 +198,20 @@ include 'gerichte_array.php'
         </div>
     </section>
     <section id="Zahlen">
-        <h2>E-Mensa in</h2>
+        <h2>E-Mensa in Zahlen</h2>
         <div class="flexi">
             <div>
-            x Besuche
+                <?php
+                echo "Die Seite wurde {$_SESSION['zaehler']} mal besucht.";
+                ?>
         </div>
         <div>
             y Anmeldungen zum Newsletter
         </div>
         <div>
-            z Speisen
+            <?php
+            echo "Es gibt $anzahl_gerichte Speisen. "
+            ?>
         </div>
         </div>
     </section>
