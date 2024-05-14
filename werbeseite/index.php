@@ -219,7 +219,10 @@ include 'gerichte_array.php';
         <h2>
             Interesse geweckt? Wir informieren Sie!
         </h2>
-        <form action="formdata.html" method="post">
+        <form action="mensa_formdata.php" method="post">
+            <?php if ($fehler) {?>
+            <div>Fehler: <?php echo $fehler; ?></div>
+            <?php } else {?><div> Die Anmeldung wurde erfolgreich gespeichert</div> <?php } ?>
             <div class="forms">
                 <div>
                     <label for="name">Ihr Name:</label>
@@ -240,9 +243,9 @@ include 'gerichte_array.php';
                     </select>
                 </div>
             </div>
-            <input type="checkbox">Datenschutzbestimmungen stimme ich zu
+            <input type="checkbox" id="datenschutz">Datenschutzbestimmungen stimme ich zu
             <br>
-            <input id="floati" type="submit" value="Zum Newsletter anmelden" disabled>
+            <input id="floati" type="submit" value="Zum Newsletter anmelden">
         </form>
     </section>
     <section id="Wichtig">
