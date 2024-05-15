@@ -1,4 +1,11 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Amelie, Petersen, 3661323
+ * Nele, Mikkelsen, 3650167
+ */
+?>
+<?php
 var_dump($_POST);
 $kontakte_newsletter = [];
 function no_leerzeichen ($Name){

@@ -1,4 +1,11 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Amelie, Petersen, 3661323
+ * Nele, Mikkelsen, 3650167
+ */
+?>
+<?php
 $famousMeals = [
     1 => ['name' => 'Currywurst mit Pommes',
         'winner' => [2001, 2003, 2007, 2010, 2020]],

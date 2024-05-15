@@ -1,3 +1,10 @@
+<?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Amelie, Petersen, 3661323
+ * Nele, Mikkelsen, 3650167
+ */
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>

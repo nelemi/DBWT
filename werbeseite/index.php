@@ -1,4 +1,11 @@
 <?php
+/**
+ * Praktikum DBWT. Autoren:
+ * Amelie, Petersen, 3661323
+ * Nele, Mikkelsen, 3650167
+ */
+?>
+<?php
 session_start();
 if(!isset($_SESSION['zaehler'])){
     $_SESSION['zaehler'] = 0;
