@@ -7,13 +7,13 @@
 ?>
 
 <?php
+var_dump($_GET);
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
-
 const GET_SHOW_DESCRIPTION = 'show_description';
 const GET_SPRACHE = 'sprache';
-
 const GET_FLOPP_ODER_TOP = 'flopp_oder_top';
+
 /**
  * List of all allergens.
  */
@@ -132,23 +132,14 @@ if (!empty($_GET[GET_FLOPP_ODER_TOP])) {
     }
 }
 
-//<?php echo $meal['description']; stand unten bei meal description
-function description ($meal) {
-    //if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
-    //if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
-    //return NULL;
-    return true;
-     return !(isset($GET[GET_SHOW_DESCRIPTION]) && $_GET[GET_SHOW_DESCRIPTION] == 0);
-    }
+ function description ($meal) {
+      if (isset($_GET[GET_SHOW_DESCRIPTION]) && $_GET[GET_SHOW_DESCRIPTION] === '0') {
+          return NULL;
+      } else {
+          return $meal['description'];
+      }
+}
 
-    //else {
-         //echo $meal['description'];
-
-//if (!empty($_GET[GET_SHOW_DESCRIPTION])) {
-    //if ($_GET[GET_SHOW_DESCRIPTION] == 0) {
-        //$meal['description'] = "";
-    //}
-//}}
 function calcMeanStars (array $ratings) : float {
     $sum = 0;
     foreach ($ratings as $rating) {
@@ -175,7 +166,7 @@ function calcMeanStars (array $ratings) : float {
     </head>
     <body>
         <h1><?php echo $ausgabe ['Gericht']?>: <?php echo $meal['name']; ?></h1>
-        <p><?php if (!description($meal)) {echo $meal['description'];}?></p>
+        <p><?php echo description($meal)?></p>
         <h1><?php echo $ausgabe ['Bewertungen']?> ( <?php echo $ausgabe ['insgesamt']?>: <?php echo calcMeanStars($ratings); ?>)</h1>
         <form method="get">
             <label for="search_text">Filter:</label>
