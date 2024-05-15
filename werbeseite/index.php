@@ -216,7 +216,7 @@ include 'mensa_formdata.php';
             <?php
             $anmelde_file = fopen('./anmeldungen.txt', 'r');
             $counter = 0;
-            while (!feof($anmelde_file)) {
+            while (!feof($anmelde_file)) { //Jede Zeile = eine Anmeldung
                 fgets($anmelde_file) AND $counter++;
             }
             echo "Es gab $counter Newsletteranmeldungen";
