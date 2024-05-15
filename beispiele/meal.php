@@ -7,7 +7,6 @@
 ?>
 
 <?php
-var_dump($_GET);
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
 const GET_SHOW_DESCRIPTION = 'show_description';
@@ -122,7 +121,7 @@ foreach ($ratings as $rating) {
 }
 
 // Flopp oder Top
-$flopp_oder_top = "";
+$flopp_oder_top = [];
 if (!empty($_GET[GET_FLOPP_ODER_TOP])) {
     if ($_GET[GET_FLOPP_ODER_TOP] == 'flop') {
       $flopp_oder_top = $list_of_min;

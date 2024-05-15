@@ -7,6 +7,7 @@ if(!isset($_SESSION['zaehler'])){
 $_SESSION['zaehler']++;
 
 include 'gerichte_array.php';
+include 'mensa_formdata.php';
 ?>
 
 
@@ -245,7 +246,7 @@ include 'gerichte_array.php';
             </div>
             <input type="checkbox" id="datenschutz">Datenschutzbestimmungen stimme ich zu
             <br>
-            <input id="floati" type="submit" value="Zum Newsletter anmelden">
+            <input id="floati" type="submit" name="submit" value="Zum Newsletter anmelden">
         </form>
     </section>
     <section id="Wichtig">

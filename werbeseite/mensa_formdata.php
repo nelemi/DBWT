@@ -9,7 +9,7 @@ function no_leerzeichen ($Name){
     }
     return $korrekt;
 }
-if ($_POST['submitted']) {
+if (isset($_POST['submit'])) {
     $fehler = false;
     $sprache = $_POST['intervall'];
     if (isset($_POST['name'])) {
