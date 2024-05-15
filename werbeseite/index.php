@@ -219,7 +219,7 @@ include 'mensa_formdata.php';
             while (!feof($anmelde_file)) { //Jede Zeile = eine Anmeldung
                 fgets($anmelde_file) AND $counter++;
             }
-            echo "Es gab $counter Newsletteranmeldungen";
+            echo "Es gab $counter Newsletteranmeldungen. ";
             fclose($anmelde_file);
             ?>
         </div>
