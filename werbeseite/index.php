@@ -226,10 +226,8 @@ include 'mensa_formdata.php';
         <h2>
             Interesse geweckt? Wir informieren Sie!
         </h2>
-        <form action="mensa_formdata.php" method="post">
-            <?php if ($fehler) {?>
-                <div>Fehler: <?php echo $fehler; ?></div>
-            <?php } else {?><div> Die Anmeldung wurde erfolgreich gespeichert</div> <?php } ?>
+        <form action="index.php" method="post">
+            <?php echo check_form()?>
             <div class="forms">
                 <div>
                     <label for="name">Ihr Name:</label>
