@@ -169,7 +169,7 @@ function calcMeanStars (array $ratings) : float {
         <h1><?php echo $ausgabe ['Bewertungen']?> ( <?php echo $ausgabe ['insgesamt']?>: <?php echo calcMeanStars($ratings); ?>)</h1>
         <form method="get">
             <label for="search_text">Filter:</label>
-            <input id="search_text" type="text" name="search_text" placeholder="<?php echo $searchTerm ?>">
+            <input id="search_text" type="text" name="search_text" value="<?php echo $searchTerm ?>">
             <input type="submit" value="<?php echo $ausgabe ['Suchen']?>">
         </form>
         <table class="rating">
