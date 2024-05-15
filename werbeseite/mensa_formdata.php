@@ -3,9 +3,11 @@ var_dump($_POST);
 $kontakte_newsletter = [];
 function no_leerzeichen ($Name){
     $Name_new = trim($Name);
+    $korrekt = false;
     if (strlen($Name_new) != 0){
-      return true;
+      $korrekt = true;
     }
+    return $korrekt;
 }
 if ($_POST['submitted']) {
     $fehler = false;
