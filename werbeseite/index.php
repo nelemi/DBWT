@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if(!isset($_SESSION['zaehler'])){
     $_SESSION['zaehler'] = 0;
 }
@@ -222,7 +221,7 @@ include 'mensa_formdata.php';
         </h2>
         <form action="mensa_formdata.php" method="post">
             <?php if ($fehler) {?>
-            <div>Fehler: <?php echo $fehler; ?></div>
+                <div>Fehler: <?php echo $fehler; ?></div>
             <?php } else {?><div> Die Anmeldung wurde erfolgreich gespeichert</div> <?php } ?>
             <div class="forms">
                 <div>

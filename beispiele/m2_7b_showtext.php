@@ -19,7 +19,8 @@
 $textdatei = fopen('./en.txt', 'r');
 const GET_SUCHWORT = 'suche';
 
-if (!empty($_GET[GET_SUCHWORT])) {
+$suchwort = 'Senden';
+if (isset($_GET[GET_SUCHWORT])) {
     $suchwort = $_GET[GET_SUCHWORT];
 }
 if (!$textdatei) {
