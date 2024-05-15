@@ -243,12 +243,12 @@ include 'mensa_formdata.php';
                     <label for="int">Newsletter bitte in:</label>
                     <br>
                     <select id="int" name="intervall">
-                        <option value="1">Deutsch</option>
-                        <option value="2">Englisch</option>
+                        <option value="Deutsch">Deutsch</option>
+                        <option value="Englisch">Englisch</option>
                     </select>
                 </div>
             </div>
-            <input type="checkbox" id="datenschutz">Datenschutzbestimmungen stimme ich zu
+            <input type="checkbox" name="datenschutz" id="datenschutz">Datenschutzbestimmungen stimme ich zu
             <br>
             <input id="floati" type="submit" name="submit" value="Zum Newsletter anmelden">
         </form>

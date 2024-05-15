@@ -6,7 +6,7 @@
  */
 ?>
 <?php
-$kontakte_newsletter = [];
+//$kontakte_newsletter = [];
 function no_leerzeichen ($Name){
     $Name_new = trim($Name);
     $korrekt = false;
@@ -16,6 +16,10 @@ function no_leerzeichen ($Name){
     return $korrekt;
 }
 function check_form(){
+    $file = fopen("anmeldungen.txt", "a");
+    if (!$file){
+        die('Öffnen fehlgeschlagen!');
+    }
     $ausgabe = "";
     if (isset($_POST['submit'])) {
         $sprache = $_POST['intervall'];
@@ -26,8 +30,9 @@ function check_form(){
                     $email = $_POST['email'] ?? NULL;
                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                         if ($email != 'rcpt.at' && $email != 'damnthespam.at' && $email != 'wegwerfmail.de' && $email != 'trashmail.*') {
-                            $person = array('Email' => $email, 'Sprache' => $sprache);
-                            $kontakte_newsletter[$Name] = $person;
+                            fwrite($file,"$Name, $email, $sprache\r\n");
+                            //$person = array('Email' => $email, 'Sprache' => $sprache);
+                            //$kontakte_newsletter[$Name] = $person;
                         } else {
                             $ausgabe = 'Ihre E-Mail entspricht nicht den Vorgaben.';
                             return $ausgabe;
@@ -50,6 +55,7 @@ function check_form(){
         }
     }
     $ausgabe = 'Die Speicherung ihrer Anmeldung war erfolgreich.';
+    fclose($file);
     return $ausgabe;
 }
 
