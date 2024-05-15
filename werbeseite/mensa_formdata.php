@@ -6,6 +6,7 @@
  */
 ?>
 <?php
+//funktion die alle Eingaben testet
 //$kontakte_newsletter = [];
 function no_leerzeichen ($Name){
     $Name_new = trim($Name);
