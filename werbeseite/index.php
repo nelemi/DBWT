@@ -213,7 +213,15 @@ include 'mensa_formdata.php';
                 ?>
         </div>
         <div>
-            y Anmeldungen zum Newsletter
+            <?php
+            $anmelde_file = fopen('./anmeldungen.txt', 'r');
+            $counter = 0;
+            while (!feof($anmelde_file)) {
+                fgets($anmelde_file) AND $counter++;
+            }
+            echo "Es gab $counter Newsletteranmeldungen";
+            fclose($anmelde_file);
+            ?>
         </div>
         <div>
             <?php
