@@ -21,7 +21,7 @@ if (!$result) {
 }
 
 while ($row = mysqli_fetch_assoc($result)) {
-    echo '<li>',$row['id'], ':', $row['name'], '</li>';
+    echo '<li>', $row['name'], '</li>';
 }
 
 mysqli_free_result($result);
