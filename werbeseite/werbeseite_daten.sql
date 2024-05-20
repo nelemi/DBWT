@@ -134,7 +134,7 @@ SELECT erfasst_am FROM gericht;
 #Erfassungsdatum sowie den Namen (als Attributname Gerichtname) aller Gerichte absteigend sortiert nach Gerichtname
 SELECT erfasst_am, name AS Gerichtname FROM gericht ORDER BY Gerichtname DESC;
 #Namen und Beschreibung, aufsteigend...
-SELECT name, beschreibung FROM gericht ORDER BY name ASC LIMIT 10 OFFSET 5;
+SELECT name, beschreibung FROM gericht ORDER BY name LIMIT 10 OFFSET 5;
 SELECT DISTINCT typ FROM allergen;
 SELECT name FROM gericht WHERE name LIKE 'K%';
 SELECT id, name FROM gericht WHERE name LIKE '%suppe%';
