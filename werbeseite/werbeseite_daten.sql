@@ -142,3 +142,27 @@ SELECT * FROM kategorie WHERE eltern_id IS NULL;
 UPDATE allergen SET name = 'Kamut' WHERE code = 'a6';
 INSERT INTO gericht (`id`, `name`, `beschreibung`, `erfasst_am`, `vegan`, `vegetarisch`, `preisintern`, `preisextern`) VALUES  (21, 'Currywurst mit Pommes', 'Leckerer Klassiker', '2024-05-19', 0, 0, 2.3, 3);
 INSERT INTO gericht_hat_kategorie (gericht_id, kategorie_id) VALUES (21, 3);
+#Aufgabe 6
+#Alle Gerichte mit allen zugehörigen Allergenen; alle Allergene bleiben erhalten
+SELECT g.name AS Gericht,a.name AS Allergen
+FROM gericht g
+         RIGHT JOIN
+     gericht_hat_allergen gha ON g.id = gha.gericht_id
+         RIGHT JOIN
+     allergen a ON gha.code = a.code;
+#Anzahl der Gerichte pro Kategorie aufsteigend sortiert nach Zahl, nur alle die mehr als 2 Gerichte haben.
+SELECT k.name AS Kategorie, COUNT(g.id) AS Anzahl_Gerichte
+FROM gericht g
+         JOIN gericht_hat_kategorie ghk ON g.id = ghk.gericht_id
+         JOIN kategorie k ON ghk.kategorie_id = k.id
+GROUP BY k.name
+HAVING Anzahl_Gerichte > 2
+ORDER BY
+    Anzahl_Gerichte ASC;
+
+#Alle Gerichte, die vier oder mehr Allergene aufweisen
+SELECT g.name AS gericht, COUNT(ghk.gericht_id) AS Anzahl_Allergene
+FROM gericht g
+         JOIN gericht_hat_allergen ghk ON ghk.gericht_id = g.id
+GROUP BY g.name
+HAVING Anzahl_Allergene >= 4;
