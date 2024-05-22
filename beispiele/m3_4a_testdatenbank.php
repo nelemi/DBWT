@@ -1,14 +1,14 @@
 <?php
 $servername = "localhost"; // Host der Datenbank
 $username = "root"; // Benutzername zur Anmeldung
-$password = "Datenbankpasswort"; // Passwort
+$password = "webtech#12"; // Passwort
 $database = "emensawerbeseite"; // Datenbankname
 
 $link=mysqli_connect($servername, $username, $password, $database
 );
 
 if (!$link) {
-    echo "Verbindung fehlgeschlagen: ", mysqli_connect_error();
+     echo "Verbindung fehlgeschlagen: ", mysqli_connect_error();
     exit();
 }
 
