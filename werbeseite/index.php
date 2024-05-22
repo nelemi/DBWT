@@ -162,7 +162,61 @@ include 'mensa_formdata.php';
     <section id="speisen">
         <h2>Köstlichkeiten, die Sie erwarten</h2>
         <div class="gridcon">
-        <table id="auswahl">
+            <?php
+            $servername = "localhost"; // Host der Datenbank
+            $username = "root"; // Benutzername zur Anmeldung
+            $password = "Swammy2504"; // Passwort
+            $database = "emensawerbeseite"; // Datenbankname
+
+            $link = mysqli_connect($servername, $username, $password, $database
+            );
+
+            if (!$link) {
+                echo "Verbindung fehlgeschlagen: ", mysqli_connect_error();
+                exit();
+            }
+
+            $sql = "SELECT name, preisintern, preisextern, code 
+                    FROM gericht 
+                    LEFT JOIN gericht_hat_allergen ON id = gericht_id
+                    GROUP BY id
+                    ORDER BY name
+                    LIMIT 5";
+
+            $result = mysqli_query($link, $sql);
+            if (!$result) {
+                echo "Fehler während der Abfrage:  ", mysqli_error($link);
+                exit();
+            }
+            ?>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name des Gerichts</th>
+                    <th>Preis intern</th>
+                    <th>Preis extern</th>
+                    <th>Allergen</th>
+                </tr>
+                </thead>
+                <?php
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo '<tr>', '<td>', $row['name'], '</td>', '<td>', $row['preisintern'], '</td>', '<td>', $row['preisextern'], '</td>', '<td>', $row['code'], '</td>','</tr>';
+                    }
+                ?>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </table>
+
+            <?php
+            mysqli_free_result($result);
+            mysqli_close($link);
+            ?>
+
+            <!--
+            <table id="auswahl">
             <thead>
             <tr>
                 <th></th>
@@ -184,7 +238,7 @@ include 'mensa_formdata.php';
                 <td>5,30</td>
                 <td><img src="/werbeseite/img/spinatrisotto.jpg" width="100" height="50" alt="Spinatrisotto"</td> </tr>
             <tr>
-                <td><?php echo gerichte(2)?></td>
+                <td>//<?php echo gerichte(2)?></td>
                 <td>5,00</td>
                 <td>9,50</td>
                 <td><img src="/werbeseite/img/tortellini.jpg" width="100" height="50" alt="Tortellini"</td>
@@ -202,6 +256,7 @@ include 'mensa_formdata.php';
             </tr>
             </tbody>
         </table>
+        -->
         </div>
     </section>
     <section id="Zahlen">
