@@ -166,3 +166,24 @@ FROM gericht g
          JOIN gericht_hat_allergen ghk ON ghk.gericht_id = g.id
 GROUP BY g.name
 HAVING Anzahl_Allergene >= 4;
+
+#Aufgabe 7
+ALTER TABLE gericht
+ ADD CONSTRAINT gericht_gericht_hat_allergen_gericht_id_fk
+    FOREIGN KEY (id)
+    REFERENCES gericht_hat_allergen (gericht_id);
+
+ALTER TABLE gericht
+ ADD CONSTRAINT gericht_gericht_hat_kategorie_gericht_id
+     FOREIGN KEY (id)
+     REFERENCES gericht_hat_kategorie (gericht_id);
+
+ALTER TABLE kategorie
+    ADD CONSTRAINT kategorie_gericht_hat_kategorie_kategorie_id_fk
+        FOREIGN KEY (id)
+            REFERENCES gericht_hat_kategorie (kategorie_id);
+
+ALTER TABLE allergen
+ADD CONSTRAINT allergen_gericht_hat_allergen_code_fk
+    FOREIGN KEY (code)
+    REFERENCES gericht_hat_allergen (code);
