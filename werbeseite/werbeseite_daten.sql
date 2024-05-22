@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS emensawerbeseite CHARACTER SET UTF8mb4 COLLATE utf8mb4_unicode_ci;
 USE emensawerbeseite;
-
+#hey, klappts
 CREATE TABLE gericht (
                          id  INT8 PRIMARY KEY,
                          name VARCHAR(80) NOT NULL UNIQUE,
