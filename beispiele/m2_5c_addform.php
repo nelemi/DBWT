@@ -49,7 +49,7 @@ if (!empty($_GET[GET_PARAM_ZAHL_B])) {
                 if (isset($_GET['addieren'])) {
                     $ergebnis = addieren($zahl_a, $zahl_b);
 
-                    echo $ergebnis;//wird nie ausgegeben!!!!!
+                    echo $ergebnis;
                 }
                 elseif (isset($_GET['multiplizieren'])) {
                     echo $zahl_a * $zahl_b;
