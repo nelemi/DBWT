@@ -165,7 +165,7 @@ include 'mensa_formdata.php';
             <?php
             $servername = "localhost"; // Host der Datenbank
             $username = "root"; // Benutzername zur Anmeldung
-            $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
+            $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
             $database = "emensawerbeseite"; // Datenbankname
 
             $link = mysqli_connect($servername, $username, $password, $database
@@ -188,6 +188,19 @@ include 'mensa_formdata.php';
                 echo "Fehler während der Abfrage:  ", mysqli_error($link);
                 exit();
             }
+
+            $sql2 ="SELECT gha.code, a.name
+                    FROM gericht_hat_allergen gha
+                    LEFT JOIN allergen a ON gha.code = a.code
+                    GROUP BY gha.gericht_id
+                    LIMIT 5";
+
+            $result2 = mysqli_query($link, $sql2);
+            if (!$result2) {
+                echo "Fehler während der Abfrage:  ", mysqli_error($link);
+                exit();
+            }
+
 
             ?>
             <table>
@@ -213,11 +226,19 @@ include 'mensa_formdata.php';
                 </tr>
             </table>
             <ul>
+                <?php
+                while($row2 = mysqli_fetch_assoc($result2)) {
+                    echo '<li>', $row2['code'], ':', $row2['name'], '</li>';
+                }
+                ?>
+            </ul>
+            <!--
+            <ul>
                 <?php foreach ($used_allergens as $used_allergen) {
                     if ($used_allergen != NULL) {
                 ?><li> <?php echo $used_allergen ?></li> <?php } }?>
             </ul>
-
+            -->
             <?php
             mysqli_free_result($result);
             mysqli_close($link);
