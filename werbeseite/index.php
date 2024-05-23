@@ -165,7 +165,7 @@ include 'mensa_formdata.php';
             <?php
             $servername = "localhost"; // Host der Datenbank
             $username = "root"; // Benutzername zur Anmeldung
-            $password = "Swammy2504"; // Passwort
+            $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
             $database = "emensawerbeseite"; // Datenbankname
 
             $link = mysqli_connect($servername, $username, $password, $database
@@ -176,11 +176,11 @@ include 'mensa_formdata.php';
                 exit();
             }
 
-            $sql = "SELECT name, preisintern, preisextern, code 
-                    FROM gericht 
-                    LEFT JOIN gericht_hat_allergen ON id = gericht_id
-                    GROUP BY id
-                    ORDER BY name
+            $sql = "SELECT g.name, g.preisintern, g.preisextern, GROUP_CONCAT(gha.code ORDER BY gha.code ASC) AS allergen_codes
+                    FROM gericht g
+                    LEFT JOIN gericht_hat_allergen gha ON g.id = gha.gericht_id
+                    GROUP BY g.id 
+                    ORDER BY name ASC
                     LIMIT 5";
 
             $result = mysqli_query($link, $sql);
@@ -188,6 +188,7 @@ include 'mensa_formdata.php';
                 echo "Fehler während der Abfrage:  ", mysqli_error($link);
                 exit();
             }
+
             ?>
             <table>
                 <thead>
@@ -199,8 +200,10 @@ include 'mensa_formdata.php';
                 </tr>
                 </thead>
                 <?php
+                $used_allergens = [];
                     while($row = mysqli_fetch_assoc($result)) {
-                        echo '<tr>', '<td>', $row['name'], '</td>', '<td>', $row['preisintern'], '</td>', '<td>', $row['preisextern'], '</td>', '<td>', $row['code'], '</td>','</tr>';
+                        echo '<tr>', '<td>', $row['name'], '</td>', '<td>', $row['preisintern'], '</td>', '<td>', $row['preisextern'], '</td>', '<td>', $row['allergen_codes'], '</td>','</tr>';
+                        $used_allergens[] = $row['allergen_codes'];
                     }
                 ?>
                 <tr>
@@ -209,11 +212,18 @@ include 'mensa_formdata.php';
                     <td>...</td>
                 </tr>
             </table>
+            <ul>
+                <?php foreach ($used_allergens as $used_allergen) {
+                    if ($used_allergen != NULL) {
+                ?><li> <?php echo $used_allergen ?></li> <?php } }?>
+            </ul>
 
             <?php
             mysqli_free_result($result);
             mysqli_close($link);
             ?>
+        </div>
+
 
             <!--
             <table id="auswahl">
