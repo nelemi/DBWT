@@ -239,13 +239,7 @@ include 'mensa_formdata.php';
                 ?><li> <?php echo $used_allergen ?></li> <?php } }?>
             </ul>
             -->
-            <?php
-            mysqli_free_result($result);
-            mysqli_close($link);
-            ?>
         </div>
-
-
             <!--
             <table id="auswahl">
             <thead>
@@ -295,9 +289,24 @@ include 'mensa_formdata.php';
         <div class="flexi">
             <div>
                 <?php
-                echo "Die Seite wurde {$_SESSION['zaehler']} mal besucht.";
+                $sql_count = "SELECT count FROM besucher";
+                $result_count = mysqli_query($link, $sql_count);
+
+                if ($result_count) { // wenn Abfrage erfolgreich und somit die Website aufgerufen wurde, dann wird der Zähler inkrementiert
+                    $row = mysqli_fetch_assoc($result_count);
+                    $neuer_count = $row['count'] + 1; // Zähler erhöhen
+
+                    // SQL Anfrage aktualisieren bzw. auf neuen Zähler setzen
+                    $sql_neu = "UPDATE besucher SET count = $neuer_count";
+                    mysqli_query($link, $sql_neu);
+                } else {
+                    echo "Fehler während der Abfrage:  ", mysqli_error($link);
+                    exit();
+                }
+
+                echo "Die Seite wurde $neuer_count Mal besucht. "
                 ?>
-        </div>
+            </div>
         <div>
             <?php
             $anmelde_file = fopen('./anmeldungen.txt', 'r');
@@ -309,11 +318,23 @@ include 'mensa_formdata.php';
             fclose($anmelde_file);
             ?>
         </div>
-        <div>
+            <div>
+                <?php
+                $sql3 = "SELECT COUNT(id) AS anzahl_gerichte FROM gericht";
+
+                $result3 = mysqli_query($link, $sql3);
+                if (!$result3) {
+                    echo "Fehler während der Abfrage:  ", mysqli_error($link);
+                    exit();
+                }
+                $row3 = mysqli_fetch_assoc($result3);
+                echo "Es gibt ", $row3['anzahl_gerichte'], " Gerichte. ";
+                ?>
+            </div>
             <?php
-            echo "Es gibt $anzahl_gerichte Speisen. "
+            mysqli_free_result($result);
+            mysqli_close($link);
             ?>
-        </div>
         </div>
     </section>
     <section id="Kontakt">

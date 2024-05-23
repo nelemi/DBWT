@@ -32,6 +32,12 @@ CREATE TABLE gericht_hat_kategorie (
                                        gericht_id INT8 NOT NULL,
                                        kategorie_id INT8 NOT NULL
 );
+
+CREATE TABLE besucher (
+                                count INT NOT NULL
+);
+INSERT INTO besucher (count) VALUES (0);
+
 INSERT INTO `allergen` (`code`, `name`, `typ`) VALUES
 	('a', 'Getreideprodukte', 'Getreide (Gluten)'),
 	('a1', 'Weizen', 'Allergen'),
