@@ -165,7 +165,7 @@ include 'mensa_formdata.php';
             <?php
             $servername = "localhost"; // Host der Datenbank
             $username = "root"; // Benutzername zur Anmeldung
-            $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
+            $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
             $database = "emensawerbeseite"; // Datenbankname
 
             $link = mysqli_connect($servername, $username, $password, $database
@@ -193,6 +193,7 @@ include 'mensa_formdata.php';
                     FROM gericht_hat_allergen gha
                     LEFT JOIN allergen a ON gha.code = a.code
                     GROUP BY gha.gericht_id
+                    ORDER BY name ASC
                     LIMIT 5";
 
             $result2 = mysqli_query($link, $sql2);
@@ -213,10 +214,12 @@ include 'mensa_formdata.php';
                 </tr>
                 </thead>
                 <?php
-                $used_allergens = [];
+                //Ausgabe aller Gerichtsdaten in einer Tabelle
+                $used_allergens_arr_str = [];
+                //Speicherung der benutzen allergene in einem Array (Dieses Array hat nun als Werte strings der allergene)
                     while($row = mysqli_fetch_assoc($result)) {
                         echo '<tr>', '<td>', $row['name'], '</td>', '<td>', $row['preisintern'], '</td>', '<td>', $row['preisextern'], '</td>', '<td>', $row['allergen_codes'], '</td>','</tr>';
-                        $used_allergens[] = $row['allergen_codes'];
+                        $used_allergens_arr_str[] = $row['allergen_codes'];
                     }
                 ?>
                 <tr>
@@ -232,13 +235,23 @@ include 'mensa_formdata.php';
                 }
                 ?>
             </ul>
-            <!--
             <ul>
-                <?php foreach ($used_allergens as $used_allergen) {
-                    if ($used_allergen != NULL) {
-                ?><li> <?php echo $used_allergen ?></li> <?php } }?>
+                <?php
+                //Array anlegen welche nur Werte Allergene besitzt, diese sollten sich nicht doppeln
+                $used_allergens_arr = [];
+                foreach ($used_allergens_arr_str as $str_used_allergen) {
+                    // Zugriff auf die Allergen-strings die nicht leer sind
+                    if ($str_used_allergen != NULL) {
+                        // Werte des Arrays (momentan noch strings) in Array umwandeln mit explode
+                        foreach (explode(",", $str_used_allergen) as $char) {
+                            // An dieser Stelle prüfen ob Wert/Allergen schon in used_allergens_arr, wenn nicht hinzufügen
+                            if (!in_array($char, $used_allergens_arr)) {
+                                $used_allergens_arr[] = $char;
+                            }}}}
+                // Ausgabe der Allergen - Werte als Liste
+                foreach ($used_allergens_arr as $used_allergen) {
+                  ?><li> <?php echo $used_allergen ?></li> <?php }?>
             </ul>
-            -->
         </div>
             <!--
             <table id="auswahl">
