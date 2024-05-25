@@ -6,12 +6,6 @@
  */
 ?>
 <?php
-session_start();
-if(!isset($_SESSION['zaehler'])){
-    $_SESSION['zaehler'] = 0;
-}
-$_SESSION['zaehler']++;
-
 include 'gerichte_array.php';
 include 'mensa_formdata.php';
 ?>
@@ -165,7 +159,7 @@ include 'mensa_formdata.php';
             <?php
             $servername = "localhost"; // Host der Datenbank
             $username = "root"; // Benutzername zur Anmeldung
-            $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
+            $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
             $database = "emensawerbeseite"; // Datenbankname
 
             $link = mysqli_connect($servername, $username, $password, $database
@@ -189,12 +183,11 @@ include 'mensa_formdata.php';
                 exit();
             }
 
-            $sql2 ="SELECT gha.code, a.name
+            $sql2 ="SELECT DISTINCT gha.code, a.name
                     FROM gericht_hat_allergen gha
                     LEFT JOIN allergen a ON gha.code = a.code
-                    GROUP BY gha.gericht_id
-                    ORDER BY name ASC
-                    LIMIT 5";
+                    WHERE gha.gericht_id IN (1,3,21,13,10) 
+                    ORDER BY name ASC";
 
             $result2 = mysqli_query($link, $sql2);
             if (!$result2) {
@@ -235,6 +228,7 @@ include 'mensa_formdata.php';
                 }
                 ?>
             </ul>
+            <!--
             <ul>
                 <?php
                 //Array anlegen welche nur Werte Allergene besitzt, diese sollten sich nicht doppeln
@@ -252,6 +246,7 @@ include 'mensa_formdata.php';
                 foreach ($used_allergens_arr as $used_allergen) {
                   ?><li> <?php echo $used_allergen ?></li> <?php }?>
             </ul>
+            -->
         </div>
             <!--
             <table id="auswahl">
