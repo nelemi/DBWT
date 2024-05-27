@@ -197,7 +197,7 @@ include 'mensa_formdata.php';
 
 
             ?>
-            <table>
+            <table id ="auswahl">
                 <thead>
                 <tr>
                     <th>Name des Gerichts</th>
@@ -228,68 +228,7 @@ include 'mensa_formdata.php';
                 }
                 ?>
             </ul>
-            <!--
-            <ul>
-                <?php
-                //Array anlegen welche nur Werte Allergene besitzt, diese sollten sich nicht doppeln
-                $used_allergens_arr = [];
-                foreach ($used_allergens_arr_str as $str_used_allergen) {
-                    // Zugriff auf die Allergen-strings die nicht leer sind
-                    if ($str_used_allergen != NULL) {
-                        // Werte des Arrays (momentan noch strings) in Array umwandeln mit explode
-                        foreach (explode(",", $str_used_allergen) as $char) {
-                            // An dieser Stelle prüfen ob Wert/Allergen schon in used_allergens_arr, wenn nicht hinzufügen
-                            if (!in_array($char, $used_allergens_arr)) {
-                                $used_allergens_arr[] = $char;
-                            }}}}
-                // Ausgabe der Allergen - Werte als Liste
-                foreach ($used_allergens_arr as $used_allergen) {
-                  ?><li> <?php echo $used_allergen ?></li> <?php }?>
-            </ul>
-            -->
         </div>
-            <!--
-            <table id="auswahl">
-            <thead>
-            <tr>
-                <th></th>
-                <th>Preis intern</th>
-                <th>Preis extern</th>
-                <th>Bild des Gerichts</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><?php echo gerichte()?></td>
-                <td>3,50</td>
-                <td>6,20</td>
-                <td><img src="/werbeseite/img/rindfleisch.png" width="100" height="50" alt="Rindfleisch mit Bambus"</td>
-            </tr>
-            <tr>
-                <td><?php echo gerichte( 1)?></td>
-                <td>2,90</td>
-                <td>5,30</td>
-                <td><img src="/werbeseite/img/spinatrisotto.jpg" width="100" height="50" alt="Spinatrisotto"</td> </tr>
-            <tr>
-                <td>//<?php echo gerichte(2)?></td>
-                <td>5,00</td>
-                <td>9,50</td>
-                <td><img src="/werbeseite/img/tortellini.jpg" width="100" height="50" alt="Tortellini"</td>
-            </tr>
-            <tr>
-                <td><?php echo gerichte( 3)?></td>
-                <td>2,50</td>
-                <td>4,80</td>
-                <td><img src="/werbeseite/img/waffeln.jpg" width="100" height="50" alt="Waffeln"</td>
-            </tr>
-            <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-            </tbody>
-        </table>
-        -->
         </div>
     </section>
     <section id="Zahlen">
