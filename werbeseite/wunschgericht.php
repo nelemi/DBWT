@@ -16,7 +16,7 @@
     <?php
     $servername = "localhost"; // Host der Datenbank
     $username = "root"; // Benutzername zur Anmeldung
-    $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
+    $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
     $database = "emensawerbeseite"; // Datenbankname
 
     $link = mysqli_connect($servername, $username, $password, $database
@@ -31,18 +31,35 @@
         $gericht_name = "";
         $beschreibung = "";
       if (isset($_POST['submit'])){
-          $name = isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : 'anonym';
-          $email = isset($_POST['email']) ? $_POST['email'] : '';
-          $gericht_name = isset($_POST['gericht_name']) ? $_POST['gericht_name'] : '';
-          $beschreibung = isset($_POST['beschreibung']) ? $_POST['beschreibung'] : '';
+          $name = isset($_POST['name']) && !empty($_POST['name']) ? mysqli_real_escape_string($link, $_POST['name']) : 'anonym';
+          $email = isset($_POST['email']) ? mysqli_real_escape_string($link, $_POST['email']) : '';
+          $gericht_name = isset($_POST['gericht_name']) ? mysqli_real_escape_string($link, $_POST['gericht_name']) : '';
+          $beschreibung = isset($_POST['beschreibung']) ? mysqli_real_escape_string($link, $_POST['beschreibung']) : '';
+
+          //$name = isset($_POST['name']) && !empty($_POST['name']) ? $_POST['name'] : 'anonym';
+          //$email = isset($_POST['email']) ? $_POST['email'] : '';
+          //$gericht_name = isset($_POST['gericht_name']) ? $_POST['gericht_name'] : '';
+          //$beschreibung = isset($_POST['beschreibung']) ? $_POST['beschreibung'] : '';
 
           $sql_ersteller = "SELECT eid FROM erstellerin WHERE name = '$name' AND mail = '$email'"; # Lösung ChatBot, vorher kamen Fehler auf, dass die Eingabe mehrere Rows hat
           $ersteller_result = mysqli_query($link, $sql_ersteller);
 
+          //hinzugefügt
+          if (!$ersteller_result) {
+              die("Fehler bei der Ersteller-Abfrage: " . mysqli_error($link));
+          }
+
           if (mysqli_num_rows($ersteller_result) == 0) {
               // Ersteller einfügen
               $insert_ersteller = "INSERT INTO erstellerin (name, mail) VALUES ('$name', '$email')";
-              mysqli_query($link, $insert_ersteller);
+
+              //erstmal auskommentiert
+              //mysqli_query($link, $insert_ersteller);
+
+              //hinzugefügt
+              if (!mysqli_query($link, $insert_ersteller)) {
+                  die("Fehler beim Einfügen des Erstellers: " . mysqli_error($link));
+              }
 
               // Ersteller-ID abrufen
               $ersteller_id = mysqli_insert_id($link);
@@ -58,6 +75,8 @@
           else {
             echo "Fehler während der Abfrage: ", mysqli_error($link);
         }
+          //hinzugefügt
+          mysqli_close($link);
     }}
     ?>
     <div class="forms">
