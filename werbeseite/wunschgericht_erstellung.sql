@@ -14,3 +14,6 @@ CREATE TABLE wunschgericht (
 );
 
 ALTER TABLE erstellerin ADD CONSTRAINT unique_name_email UNIQUE (name, mail);
+
+SELECT * FROM  wunschgericht w LEFT JOIN erstellerin e ON w.erstellerinid = e.eid  ORDER BY erstellerinid DESC LIMIT 5 ;
+SELECT erstellerinid, COUNT(*) as anzahl_gerichte FROM wunschgericht GROUP BY erstellerinid ;
