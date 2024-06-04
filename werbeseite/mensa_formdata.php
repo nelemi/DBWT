@@ -24,11 +24,11 @@ function check_form(){
     $ausgabe = "";
     if (isset($_POST['submit'])) {
         $sprache = $_POST['intervall'];
-        if (isset($_POST['name'])) {
-            $Name = $_POST['name'];
+        if (isset( $_POST['name'])) {
+            $Name =  htmlspecialchars($_POST['name']);
             if (no_leerzeichen($Name)) {
                 if (isset($_POST['datenschutz'])) {
-                    $email = $_POST['email'] ?? NULL;
+                    $email = htmlspecialchars($_POST['email']) ?? NULL;
                     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
                         if ($email != 'rcpt.at' && $email != 'damnthespam.at' && $email != 'wegwerfmail.de' && $email != 'trashmail.*') {
                             fwrite($file,"$Name, $email, $sprache\r\n");

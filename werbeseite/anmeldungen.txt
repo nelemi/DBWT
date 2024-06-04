@@ -2,3 +2,8 @@ Nele, nele.mikkelsen@alumni.fh-aachen.de, Deutsch
 Amelie, amelie.p@gmail.com, Englisch
 Milan , milan.v.laufenberg@icloud.com, Deutsch
 Amelie, amelie.p@gmail.com, Englisch
+Nele, nele.mikkelsen@alumni.fh-aachen.de, Deutsch
+Nele, nele.mikkelsen@alumni.fh-aachen.de, Deutsch
+Hannah, Stefan.stamer@dr-stamer.de, Deutsch
+Stefan, Stefan.stamer@dr-stamer.de, Deutsch
+&lt;p&gt; Nele &lt;p&gt;, Stefan.stamer@dr-stamer.de, Deutsch
