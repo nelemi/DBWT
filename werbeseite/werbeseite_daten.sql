@@ -23,7 +23,8 @@ CREATE TABLE kategorie (
                                     id        INT8 PRIMARY KEY,
                                     name      VARCHAR(80) NOT NULL,
                                     eltern_id INT8,
-                                    bildname  VARCHAR(200)
+                                    bildname  VARCHAR(200),
+                                    FOREIGN KEY (eltern_id) REFERENCES kategorie(id) ON DELETE RESTRICT
 
 );
 
@@ -151,7 +152,7 @@ SELECT erfasst_am, name AS Gerichtname FROM gericht ORDER BY Gerichtname DESC;
 #Namen und Beschreibung, aufsteigend...
 SELECT name, beschreibung FROM gericht ORDER BY name LIMIT 10 OFFSET 5;
 SELECT DISTINCT typ FROM allergen;
-SELECT name FROM gericht WHERE name LIKE 'K%';
+SELECT name FROM gericht WHERE name LIKE 'K%' OR 'k%';
 SELECT id, name FROM gericht WHERE name LIKE '%suppe%';
 SELECT * FROM kategorie WHERE eltern_id IS NULL;
 UPDATE allergen SET name = 'Kamut' WHERE code = 'a6';
