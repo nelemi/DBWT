@@ -9,7 +9,8 @@ CREATE TABLE gericht (
                          vegetarisch BOOLEAN NOT NULL,
                          vegan BOOLEAN NOT NULL,
                          preisintern DOUBLE NOT NULL CHECK (preisintern < preisextern),
-                         preisextern DOUBLE NOT NULL CHECK(preisextern > preisintern));
+                         preisextern DOUBLE NOT NULL CHECK(preisextern > preisintern)
+);
 
 CREATE TABLE allergen (
                           code CHAR(4) PRIMARY KEY,
@@ -18,19 +19,27 @@ CREATE TABLE allergen (
 );
 
 CREATE TABLE kategorie (
-                           id INT8 PRIMARY KEY,
-                           name VARCHAR(80) NOT NULL,
-                           eltern_id INT8,
-                           bildname VARCHAR(200)
+
+                                    id        INT8 PRIMARY KEY,
+                                    name      VARCHAR(80) NOT NULL,
+                                    eltern_id INT8,
+                                    bildname  VARCHAR(200)
+
 );
+
 CREATE TABLE gericht_hat_allergen (
                                       code CHAR(4),
-                                      gericht_id INT8 NOT NULL
+                                      gericht_id INT8 NOT NULL,
+                                      FOREIGN KEY (gericht_id) REFERENCES gericht(id) ON DELETE CASCADE,
+                                      FOREIGN KEY (code)  REFERENCES allergen(code) ON UPDATE CASCADE
 );
 
 CREATE TABLE gericht_hat_kategorie (
                                        gericht_id INT8 NOT NULL,
-                                       kategorie_id INT8 NOT NULL
+                                       kategorie_id INT8 NOT NULL,
+                                       FOREIGN KEY (gericht_id) REFERENCES gericht(id) ON DELETE CASCADE,
+                                       FOREIGN KEY (kategorie_id) REFERENCES kategorie (id) ON DELETE RESTRICT,
+                                       PRIMARY KEY (gericht_id, kategorie_id)
 );
 
 CREATE TABLE besucher (
@@ -174,15 +183,19 @@ GROUP BY g.name
 HAVING Anzahl_Allergene >= 4;
 
 #Aufgabe 7
-ALTER TABLE gericht
- ADD CONSTRAINT gericht_gericht_hat_allergen_gericht_id_fk
-    FOREIGN KEY (id)
-    REFERENCES gericht_hat_allergen (gericht_id);
+#ALTER TABLE gericht
+ #ADD CONSTRAINT gericht_gericht_hat_allergen_gericht_id_fk
+  #  FOREIGN KEY (id)
+   # REFERENCES gericht_hat_allergen (gericht_id)
+    #    #hinzugefügt
+    #ON DELETE CASCADE;
 
-ALTER TABLE gericht
- ADD CONSTRAINT gericht_gericht_hat_kategorie_gericht_id
-     FOREIGN KEY (id)
-     REFERENCES gericht_hat_kategorie (gericht_id);
+#ALTER TABLE gericht
+ #ADD CONSTRAINT gericht_gericht_hat_kategorie_gericht_id_fk
+  #   FOREIGN KEY (id)
+   #  REFERENCES gericht_hat_kategorie (gericht_id)
+    #     #hinzugefügt
+     #ON DELETE CASCADE;
 
 ALTER TABLE kategorie
     ADD CONSTRAINT kategorie_gericht_hat_kategorie_kategorie_id_fk
@@ -193,3 +206,21 @@ ALTER TABLE allergen
 ADD CONSTRAINT allergen_gericht_hat_allergen_code_fk
     FOREIGN KEY (code)
     REFERENCES gericht_hat_allergen (code);
+
+#M4 Aufgabe 4
+ALTER TABLE gericht_hat_kategorie
+    ADD CONSTRAINT unique_kombination UNIQUE (gericht_id, kategorie_id);
+
+#Beschleunigung durch Index, wenn Daten aus der Spalte name aufgerufen werden
+CREATE INDEX name_index ON gericht(name);
+#funktioniert's?
+EXPLAIN SELECT * FROM gericht WHERE name = 'Grilltofu';
+
+#Bei Löschung eines Gerichts sollen 1) die zugehörigen Zuordnungen zu einer Kategorie
+#und 2) auch die Zuordnungen zu Allergenen automatisch mitgelöscht werden => siehe oben bei Tabellenerstellung
+
+#Test
+DELETE FROM gericht WHERE id = 2;
+
+
+
