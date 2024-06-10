@@ -25,5 +25,32 @@ class ExampleController
 
         mysqli_close($link);
     }
+
+    public function m4_7c_gerichte(RequestData $rd) {
+        $link = connectdb();
+
+        $sql2 = 'SELECT DISTINCT g.name, g.preisintern
+                FROM gericht g
+                WHERE preisintern > 2
+                ORDER BY g.name DESC';
+
+        $result2 = mysqli_query($link, $sql2);
+
+        if (mysqli_num_rows($result2) == 0) {
+            echo "Es sind keine Gerichte vorhanden";
+        }
+
+        $arr_preis_name = [];
+        while ($row = mysqli_fetch_assoc($result2)) {
+            $arr_preis_name[] = $row;
+       }
+        mysqli_close($link);
+
+        return view('examples.m4_7c_gerichte', [
+            'request' => $rd,
+            'rows' => $arr_preis_name,
+        ]);
+
     }
+
 }
