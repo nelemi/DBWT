@@ -16,7 +16,10 @@ return array(
 
     // Erstes Beispiel:
     '/m4_6a_queryparameter' => 'ExampleController@m4_6a_queryparameter',
+    '/m4_7b_kategorie' => 'ExampleController@m4_7b_kategorie',
     '/m4' => 'ExampleController@m4_6a_queryparameter',
     '/m4_7c' => 'ExampleController@m4_7c_gerichte',
+    '/m4_7d_layout' => 'ExampleController@m4_7d_layout',
+
 
 );

@@ -21,11 +21,15 @@ class ExampleController
                     ORDER BY name ASC';
         $result = mysqli_query($link, $sql);
 
-        $data = mysqli_fetch_all($result, MYSQLI_BOTH);
+        $data = mysqli_fetch_all($result, MYSQLI_BOTH); #Gibt alle Zeilen von $result aus, speichert in Array, MYSQLI_BOTH: Sowohl assoziativ als auch indiziert
 
         mysqli_close($link);
+        return view('examples.m4_7b_kategorie', [
+            'request'=>$rd,
+            'url' => 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
+            'kategorien' => $data,
+        ]);
     }
-
     public function m4_7c_gerichte(RequestData $rd) {
         $link = connectdb();
 
@@ -43,7 +47,7 @@ class ExampleController
         $arr_preis_name = [];
         while ($row = mysqli_fetch_assoc($result2)) {
             $arr_preis_name[] = $row;
-       }
+        }
         mysqli_close($link);
 
         return view('examples.m4_7c_gerichte', [
@@ -52,5 +56,4 @@ class ExampleController
         ]);
 
     }
-
 }
