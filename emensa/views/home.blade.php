@@ -1,4 +1,4 @@
-@extends("layouts.layout")
+@extends("examples.layout")
 
 @section("content")
     <header class="mt-5">
@@ -25,10 +25,12 @@
     <style>
         body > div {
             background-color: {{$rd->query['bgcolor'] ?? 'ffffff'}}
+
         }
     </style>
 @endsection
 
 @section("jsextra")
-    <script src="/js/highlight.min.js"></script><script>hljs.highlightAll();</script>
+    <script src="/js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 @endsection
