@@ -1,6 +1,8 @@
 
 <?php
-    function db_gericht_select_all() {
+// muss Funktion dann quasi immer vor SELECT Statements in der Page eingeführt werden??
+// Oder müssen die in den Controller und wenn ja, wie?
+    function db_gerichttabelle_select_all() {
         $link = connectdb();
 
         $sql1 = 'SELECT id, name, beschreibung, preisintern, preisextern FROM gericht';
