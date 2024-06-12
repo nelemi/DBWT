@@ -2,12 +2,17 @@
 function db_gericht_hat_allergen_select_all() {
     $link = connectdb();
 
-    $sql3 = 'SELECT code, gericht_id FROM gericht_hat_allergen';
-    $result3 = mysqli_query($link, $sql3);
+    $sql2 = "SELECT DISTINCT gha.code, a.name
+                    FROM gericht_hat_allergen gha
+                    LEFT JOIN allergen a ON gha.code = a.code
+                    WHERE gha.gericht_id IN (1,3,21,13,10) 
+                    ORDER BY name ASC ";
 
-    $data3 = mysqli_fetch_all($result3, MYSQLI_BOTH);
+    $result2 = mysqli_query($link, $sql2);
+
+    $data2 = mysqli_fetch_all($result2, MYSQLI_BOTH);
 
     mysqli_close($link);
-    return $data3;
+    return $data2;
 }
 

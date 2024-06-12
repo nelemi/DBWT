@@ -5,7 +5,13 @@
     function db_gerichttabelle_select_all() {
         $link = connectdb();
 
-        $sql1 = 'SELECT id, name, beschreibung, preisintern, preisextern FROM gericht';
+        $sql1 = "SELECT g.name, g.preisintern, g.preisextern, GROUP_CONCAT(gha.code ORDER BY gha.code ASC) AS allergen_codes
+                    FROM gericht g
+                    LEFT JOIN gericht_hat_allergen gha ON g.id = gha.gericht_id
+                    GROUP BY g.id 
+                    ORDER BY name ASC
+                    LIMIT 5";
+
         $result1 = mysqli_query($link, $sql1);
 
         $data1 = mysqli_fetch_all($result1, MYSQLI_BOTH);

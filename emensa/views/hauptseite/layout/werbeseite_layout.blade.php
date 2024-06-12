@@ -11,10 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
-    <style>
-    @section ('css')
+    @section ('style')
     @show
-    </style>
+
 </head>
 <body>
 @section ('header')

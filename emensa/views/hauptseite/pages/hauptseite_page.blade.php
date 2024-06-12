@@ -6,10 +6,10 @@
  */
 ?>
 
-@extends('werbeseite_layout.blade.php')
+@extends('hauptseite.layout.werbeseite_layout')
 
-@section('css')
-@include('css.hauptseite.css')
+@section('style')
+    <link rel="stylesheet" href="css/hauptseite.css">
 @endsection
 
 @section('header')
@@ -54,47 +54,6 @@
     <section id="speisen">
         <h2>Köstlichkeiten, die Sie erwarten</h2>
         <div class="gridcon">
-            <?php
-            $servername = "localhost"; // Host der Datenbank
-            $username = "root"; // Benutzername zur Anmeldung
-            $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
-            $database = "emensawerbeseite"; // Datenbankname
-
-            $link = mysqli_connect($servername, $username, $password, $database
-            );
-
-            if (!$link) {
-                echo "Verbindung fehlgeschlagen: ", mysqli_connect_error();
-                exit();
-            }
-
-            $sql = "SELECT g.name, g.preisintern, g.preisextern, GROUP_CONCAT(gha.code ORDER BY gha.code ASC) AS allergen_codes
-                    FROM gericht g
-                    LEFT JOIN gericht_hat_allergen gha ON g.id = gha.gericht_id
-                    GROUP BY g.id
-                    ORDER BY name ASC
-                    LIMIT 5";
-
-            $result = mysqli_query($link, $sql);
-            if (!$result) {
-                echo "Fehler während der Abfrage:  ", mysqli_error($link);
-                exit();
-            }
-
-            $sql2 ="SELECT DISTINCT gha.code, a.name
-                    FROM gericht_hat_allergen gha
-                    LEFT JOIN allergen a ON gha.code = a.code
-                    WHERE gha.gericht_id IN (1,3,21,13,10)
-                    ORDER BY name ASC";
-
-            $result2 = mysqli_query($link, $sql2);
-            if (!$result2) {
-                echo "Fehler während der Abfrage:  ", mysqli_error($link);
-                exit();
-            }
-
-
-            ?>
             <table id ="auswahl">
                 <thead>
                 <tr>
@@ -104,15 +63,16 @@
                     <th>Allergen</th>
                 </tr>
                 </thead>
-                <?php
-                //Ausgabe aller Gerichtsdaten in einer Tabelle
-                $used_allergens_arr_str = [];
-                //Speicherung der benutzen allergene in einem Array (Dieses Array hat nun als Werte strings der allergene)
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo '<tr>', '<td>', $row['name'], '</td>', '<td>', $row['preisintern'], '</td>', '<td>', $row['preisextern'], '</td>', '<td>', $row['allergen_codes'], '</td>','</tr>';
-                    $used_allergens_arr_str[] = $row['allergen_codes'];
-                }
-                ?>
+                @foreach($gerichte as $gericht)
+                    <tr>
+                        <td>{{$gericht['name']}}</td>
+                        <td>{{$gericht['preisintern']}}</td>
+                        <td>{{$gericht['preisextern']}}</td>
+                        <td>{{$gericht['allergen_codes']}}</td>
+                    </tr>
+                @endforeach
+
+
                 <tr>
                     <td>...</td>
                     <td>...</td>
@@ -120,14 +80,13 @@
                 </tr>
             </table>
             <ul>
-                <?php
-                while($row2 = mysqli_fetch_assoc($result2)) {
-                    echo '<li>', $row2['code'], ':', $row2['name'], '</li>';
-                }
-                ?>
+                @foreach($gericht_hat_allergen as $gha)
+                    <li>{{$gha['code']}} : {{$gha['name']}}</li>
+                @endforeach
+
             </ul>
         </div>
-        </div>
+
     </section>
 </main>
 @endsection
