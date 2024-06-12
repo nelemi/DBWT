@@ -14,8 +14,10 @@ include 'mensa_formdata.php';
 <head>
     <meta charset="UTF-8">
     <title>@yield('title')</title>
+    <style>
     @section ('css')
     @show
+    </style>
 </head>
 <body>
 @section ('header')
