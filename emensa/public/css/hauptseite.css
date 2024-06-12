@@ -1,0 +1,98 @@
+body {
+    width: 700px;
+    margin: auto;
+    font-family:Sylfaen;
+}
+h2.mitte {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+#Message {
+    padding: 20px 10px;
+    border: 2px solid black;
+    justify-content: center;
+}
+div.gridcon {
+    display: grid;
+    border: 1px solid black;
+    height: auto;
+}
+table {
+    border-collapse: collapse;
+}
+th, tr:last-child {
+    border: 2px solid black;
+}
+td {
+    border:1px solid grey;
+}
+div.flexi {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+div.important {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
+div.forms {
+    display: flex;
+    gap: 10px;
+}
+input#floati {
+    float: right;
+}
+header {
+    height: auto;
+    text-align: center;
+    top: 20px;
+    display:inline-flex;
+    gap: 10px;border-bottom: 1px solid #282A25;
+}
+#bild {
+    display: flex;
+    justify-content: center;
+}
+section {
+    margin-top: 30px;
+}
+.navigation {
+    list-style-type: none;
+    padding-left: 0;
+}
+.navelement {
+    display: inline;
+    height: 40px;
+    margin: 20px;
+}
+.navelement a {
+    font-size: 13px;
+    color:#282A25;
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+.navelement a:hover {
+    color:#B56029;
+}
+.navelement a.active {
+    color: #B56029;
+}
+footer {
+    border-top: 1px solid #282A25;
+    display: flex;
+    justify-content:center;margin-top: 30px;
+}
+footer li {
+    display: inline;
+    border-right: 2px solid #282A25;
+    padding: 0 15px;
+}
+footer li:nth-child(3) {
+    border-right: none;
+    color: #B56029;
+}
