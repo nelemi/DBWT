@@ -1,0 +1,18 @@
+<?php $_shouldextend[1]=1; ?>
+
+<?php $this->startSection('title', 'Nummer 1'); ?>
+
+<?php $this->startSection('header'); ?>
+ <ul>
+ <li> Warum das erste Layout?</li>
+ <li> Darum</li>
+ <li> Test</li>
+ </ul>
+<?php $this->stopSection(); ?>
+<?php $this->startSection('main'); ?>
+ <p> Antwort: Weil der Controller durch die URL den Parameter no=1 erhalten hat</p>
+<?php $this->stopSection(); ?>
+<?php $this->startSection('footer'); ?>
+ Rechte gehören Nele Mikkelsen und Amelie Petersen
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('views.examples.layout.m4_7d_layout.blade.php'); } ?>
