@@ -5,10 +5,7 @@
  * Nele, Mikkelsen, 3650167
  */
 ?>
-<?php
-include 'gerichte_array.php';
-include 'mensa_formdata.php';
-?>
+
         <!DOCTYPE html>
 <html lang="de">
 <head>

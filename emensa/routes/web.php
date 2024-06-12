@@ -21,5 +21,8 @@ return array(
     '/m4_7c' => 'ExampleController@m4_7c_gerichte',
     '/m4_7d_layout' => 'ExampleController@m4_7d_layout',
 
+    // Haupseite:
+
+
 
 );
