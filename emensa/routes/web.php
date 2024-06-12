@@ -22,6 +22,7 @@ return array(
     '/m4_7d_layout' => 'ExampleController@m4_7d_layout',
 
     // Haupseite:
+    '/hauptseite' => 'WerbeseiteController@index',
 
 
 

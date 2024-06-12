@@ -59,13 +59,13 @@ class ExampleController
     public function m4_7d_layout(RequestData $rd) {
         $layout = isset($_GET['no']) ? $_GET['no'] : '1';
         if ($layout == '1') {
-            return view('m4_7d_page_1', [
+            return view('examples.pages.m4_7d_page_1', [
                 'request'=>$rd,
                 'url' => 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
             ]);
         }
         elseif ($layout == '2') {
-            return view('m4_7d_page_2', [
+            return view('examples.pages.m4_7d_page_2', [
                 'request'=>$rd,
                 'url' => 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}",
             ]);

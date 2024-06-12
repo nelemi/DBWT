@@ -9,7 +9,7 @@
 @extends('werbeseite_layout.blade.php')
 
 @section('css')
-@include('css.hauptseite')
+@include('css.hauptseite.css')
 @endsection
 
 @section('header')

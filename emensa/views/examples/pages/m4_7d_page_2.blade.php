@@ -1,4 +1,4 @@
-@extends ('m4_7d_layout.blade.php')
+@extends ('viewa.examples.layout.m4_7d_layout.blade.php')
 
 @section ('title', 'Nummer 2')
 
