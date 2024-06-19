@@ -224,4 +224,10 @@ EXPLAIN SELECT * FROM gericht WHERE name = 'Grilltofu';
 DELETE FROM gericht WHERE id = 2;
 
 
+#M5 Aufgabe 2
+ALTER TABLE gericht
+                    ADD COLUMN    bildname varchar(200) DEFAULT NULL;
 
+UPDATE gericht
+SET bildname = '01_bratkartoffel.jpg'
+WHERE id = 1;

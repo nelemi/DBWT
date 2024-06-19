@@ -69,6 +69,7 @@
                         <td>{{$gericht['preisintern']}}</td>
                         <td>{{$gericht['preisextern']}}</td>
                         <td>{{$gericht['allergen_codes']}}</td>
+                        <td>{{$gericht['bildname']}}</td>
                     </tr>
                 @endforeach
 
@@ -86,7 +87,7 @@
 
             </ul>
         </div>
-
+        
     </section>
 </main>
 @endsection
