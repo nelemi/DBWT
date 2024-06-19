@@ -15,4 +15,4 @@
 <?php $this->startSection('footer'); ?>
  Rechte gehören Nele Mikkelsen und Amelie Petersen
 <?php $this->stopSection(); ?>
-<?php if (isset($_shouldextend[1])) { echo $this->runChild('views.examples.layout.m4_7d_layout.blade.php'); } ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('examples.layout.m4_7d_layout'); } ?>

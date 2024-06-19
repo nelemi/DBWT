@@ -16,7 +16,7 @@
     <?php
     $servername = "localhost"; // Host der Datenbank
     $username = "root"; // Benutzername zur Anmeldung
-    $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
+    $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
     $database = "emensawerbeseite"; // Datenbankname
 
     $link = mysqli_connect($servername, $username, $password, $database
@@ -43,7 +43,7 @@
           if (!$ersteller_result) {
               die("Fehler bei der Ersteller-Abfrage: " . mysqli_error($link));
           }
-
+          //leer? dann neuen Erstellerid, falls schon existiert? bestehende ID merken/abrufen
           if (mysqli_num_rows($ersteller_result) == 0) {
               // Ersteller einfügen
               //Prepared Statements einfügen (1.)
@@ -67,7 +67,7 @@
           //Prepared Statements einfügen (2.)
           $statement_wg = mysqli_stmt_init($link);
           if (mysqli_stmt_prepare($statement_wg, "INSERT INTO wunschgericht (name, beschreibung, erstellungsdatum, erstellerinid) VALUES (?, ?, NOW(), ?)")){
-              mysqli_stmt_bind_param($statement_wg, "ssi", $name, $beschreibung, $ersteller_id);
+              mysqli_stmt_bind_param($statement_wg, "ssi", $gericht_name, $beschreibung, $ersteller_id);
               if (mysqli_stmt_execute($statement_wg)) {
                   echo "Wunschgericht erfolgreich eingetragen!";
               } else {

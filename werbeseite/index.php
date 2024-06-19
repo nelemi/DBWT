@@ -159,7 +159,7 @@ include 'mensa_formdata.php';
             <?php
             $servername = "localhost"; // Host der Datenbank
             $username = "root"; // Benutzername zur Anmeldung
-            $password = "Swammy2504"; // Passwort a: "Swammy2504", n:"webtech#12"
+            $password = "webtech#12"; // Passwort a: "Swammy2504", n:"webtech#12"
             $database = "emensawerbeseite"; // Datenbankname
 
             $link = mysqli_connect($servername, $username, $password, $database
@@ -314,7 +314,7 @@ include 'mensa_formdata.php';
             <br>
             <input id="floati" type="submit" name="submit" value="Zum Newsletter anmelden">
         </form>
-        <a href=" wunschgericht.php">Klicke hier um uns ein Wunschgericht mitzuteilen</a>
+        <a href="werbeseite/wunschgericht.php">Klicke hier um uns ein Wunschgericht mitzuteilen</a>
     </section>
     <section id="Wichtig">
         <h2>Das ist uns wichtig</h2>
