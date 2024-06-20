@@ -29,4 +29,8 @@ CREATE TABLE benutzer (
     anzahlanmeldungen INT NOT NULL, #Zähler, wie oft eine Anmeldung insgesamt erfolgreichdurchgeführt wurde.
     letzteanmeldung datetime, #Zeitpunkt, an dem sich der/die Benutzer:in zuletzt erfolgreich angemeldet hat
     letzterfehler datetime #Zeitpunkt, an dem sich der/die Benutzer:in zuletzterfolglos angemeldet hat
-)
+);
+
+#M5 Aufgabe 1 3)
+#neuen Benutzer anlegen und gehashtes Passwort mit Salt aus passwort.php einsetzen
+INSERT INTO benutzer (name, email, passwort, admin, anzahlanmeldungen) VALUES ('Amnele', 'admin@emensa.example', '3340634a2cf0e4f8676ad3ba176a18b8ab00d229', true, 0);

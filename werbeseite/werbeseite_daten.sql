@@ -283,5 +283,3 @@ WHERE id = 20;
 UPDATE gericht
 SET bildname = '00_image_missing'
 WHERE bildname IS NULL;
-
-
