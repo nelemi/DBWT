@@ -70,7 +70,7 @@
                         <td>{{$gericht['preisintern']}}</td>
                         <td>{{$gericht['preisextern']}}</td>
                         <td>{{$gericht['allergen_codes']}}</td>
-                        <td><img src='/public/img/{{$gericht['bildname']}}' alt='{{$gericht['bildname']}}' width = 50></td>
+                        <td><img src='/public/gerichte/img/{{$gericht['bildname']}}' alt='{{$gericht['bildname']}}' width = 50></td>
                     </tr>
                 @endforeach
 
