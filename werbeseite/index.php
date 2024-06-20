@@ -119,7 +119,7 @@ include 'mensa_formdata.php';
 </head>
 <body>
 <header>
-    <img id="Logo" src="logo_groß.jpg" alt="Mensalogo: Ein Mann mit Schnurrbart in bunten Farben" width="60" height="60" title="Mensalogo">
+    <img id="Logo" src="../emensa/public/img/logo_groß.jpg" alt="Mensalogo: Ein Mann mit Schnurrbart in bunten Farben" width="60" height="60" title="Mensalogo">
     <nav>
         <ul class=navigation>
             <li class="navelement"><a href="#ankündigung" class="nav-link">Ankündigung</a></li>
@@ -132,7 +132,7 @@ include 'mensa_formdata.php';
 </header>
 <main>
     <section id="bild">
-    <img src="titelbild_final.jpg" alt="Ein Bild einer Mensa mit bunten Stühlen" width="400" height="267" title="Mensabild">
+    <img src="../emensa/public/img/titelbild_final.jpg" alt="Ein Bild einer Mensa mit bunten Stühlen" width="400" height="267" title="Mensabild">
     </section>
     <section id="ankündigung">
         <h2>Bald gibt es Essen auch online ;)</h2>

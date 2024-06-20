@@ -14,7 +14,7 @@
 
 @section('header')
 <header>
-    <img id="Logo" src="logo_groß.jpg" alt="Mensalogo: Ein Mann mit Schnurrbart in bunten Farben" width="60" height="60" title="Mensalogo">
+    <img id="Logo" src="img/logo_groß.jpg" alt="Mensalogo: Ein Mann mit Schnurrbart in bunten Farben" width="60" height="60" title="Mensalogo">
     <nav>
         <ul class=navigation>
             <li class="navelement"><a href="#ankündigung" class="nav-link">Ankündigung</a></li>
@@ -30,7 +30,7 @@
 @section('main')
 <main>
     <section id="bild">
-        <img src="titelbild_final.jpg" alt="Ein Bild einer Mensa mit bunten Stühlen" width="400" height="267" title="Mensabild">
+        <img src="img/titelbild_final.jpg" alt="Ein Bild einer Mensa mit bunten Stühlen" width="400" height="267" title="Mensabild">
     </section>
     <section id="ankündigung">
         <h2>Bald gibt es Essen auch online ;)</h2>
@@ -70,7 +70,7 @@
                         <td>{{$gericht['preisintern']}}</td>
                         <td>{{$gericht['preisextern']}}</td>
                         <td>{{$gericht['allergen_codes']}}</td>
-                        <td><img src='/gerichte/public/img/{{$gericht['bildname']}}' alt='{{$gericht['bildname']}}' width = 50></td>
+                        <td><img src="img/gerichte/{{$gericht['bildname']}}" alt='{{$gericht['bildname']}}' width = 50></td>
                     </tr>
                 @endforeach
 

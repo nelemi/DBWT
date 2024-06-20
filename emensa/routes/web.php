@@ -24,6 +24,9 @@ return array(
     // Haupseite:
     '/hauptseite' => 'WerbeseiteController@index',
 
+    //Anmeldung:
+    '/anmeldung' => 'WerbeseiteController@anmeldung',
+
 
 
 );

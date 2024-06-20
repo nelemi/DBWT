@@ -5,6 +5,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/../models/hauptseite_gerichthatallergen
 
 class WerbeseiteController
 {
+    public function anmeldung(RequestData $request)
+{
+        return view ('hauptseite.pages.anmeldung_page');
+}
     public function index(RequestData $request)
     {
         $gericht = db_gerichttabelle_select_all();
