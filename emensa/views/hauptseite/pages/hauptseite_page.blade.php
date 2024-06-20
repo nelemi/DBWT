@@ -61,6 +61,7 @@
                     <th>Preis intern</th>
                     <th>Preis extern</th>
                     <th>Allergen</th>
+                    <th>Bild des Gerichts</th>
                 </tr>
                 </thead>
                 @foreach($gerichte as $gericht)
@@ -69,7 +70,7 @@
                         <td>{{$gericht['preisintern']}}</td>
                         <td>{{$gericht['preisextern']}}</td>
                         <td>{{$gericht['allergen_codes']}}</td>
-                        <td>{{$gericht['bildname']}}</td>
+                        <td><img src='/public/img/{{$gericht['bildname']}}' alt='{{$gericht['bildname']}}' width = 50></td>
                     </tr>
                 @endforeach
 
@@ -80,13 +81,13 @@
                     <td>...</td>
                 </tr>
             </table>
-            <ul>
-                @foreach($gericht_hat_allergen as $gha)
-                    <li>{{$gha['code']}} : {{$gha['name']}}</li>
-                @endforeach
-
-            </ul>
         </div>
+        <ul>
+            @foreach($gericht_hat_allergen as $gha)
+                <li>{{$gha['code']}} : {{$gha['name']}}</li>
+            @endforeach
+
+        </ul>
         
     </section>
 </main>

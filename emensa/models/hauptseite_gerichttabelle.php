@@ -5,7 +5,7 @@
     function db_gerichttabelle_select_all() {
         $link = connectdb();
 
-        $sql1 = "SELECT g.name, g.preisintern, g.preisextern, GROUP_CONCAT(gha.code ORDER BY gha.code ASC) AS allergen_codes
+        $sql1 = "SELECT g.name, g.preisintern, g.preisextern, g.bildname, GROUP_CONCAT(gha.code ORDER BY gha.code ASC) AS allergen_codes
                     FROM gericht g
                     LEFT JOIN gericht_hat_allergen gha ON g.id = gha.gericht_id
                     GROUP BY g.id 
