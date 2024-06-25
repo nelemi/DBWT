@@ -13,6 +13,7 @@ class WerbeseiteController
     {
         $mail = $request->query['email'] ?? false;
         $password = $request->query['password'] ?? false;
+        $name_user = 'Kein Benutzer';
 
         $_SESSION['target'] = 'hauptseite.pages.hauptseite_page';
         $_SESSION['login_result_message'] = null;
