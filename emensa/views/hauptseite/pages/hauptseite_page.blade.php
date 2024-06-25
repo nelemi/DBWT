@@ -22,6 +22,7 @@
             <li class="navelement"><a href="#Zahlen" class="nav-link">Zahlen</a></li>
             <li class="navelement"><a href="#Kontakt" class="nav-link">Kontakt</a></li>
             <li class="navelement"><a href="#Wichtig" class="nav-link">Wichtig für uns</a></li>
+            <li class="angemeldet"> „Angemeldet als {{$Name_benutzer}} “</li>
         </ul>
     </nav>
 </header>

@@ -39,7 +39,8 @@ class WerbeseiteController
             $_SESSION['login_ok'] = true;
             $target = $_SESSION['target'];
             header('Location:/' . $target);
-            exit; //Wichtig Skriptbeendung nach Weiterleitung
+            $name_user = db_select_name();
+            return view('hauptseite.pages.hauptseite_page',['Name_benutzer'=> $name_user]);
         }
         else {
             if ($user_exists){

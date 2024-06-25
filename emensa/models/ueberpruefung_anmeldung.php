@@ -24,3 +24,14 @@ function setze_letzten_fehler($mail) {
     mysqli_close($link);
 }
 
+function db_select_name($mail){
+    $link = connectdb();
+
+    $sql_benutzer_name = "SELECT name FROM benutzer WHERE email = '$mail' " ;
+
+    $result_benutzer_name = mysqli_query($link, $sql_benutzer_name);
+
+    $data_benutzer_name = mysqli_fetch_all($result_benutzer_name);
+    mysqli_close($link);
+    return $data_benutzer_name;
+}
