@@ -17,10 +17,22 @@ class WerbeseiteController
         $_SESSION['target'] = 'hauptseite.pages.hauptseite_page';
         $_SESSION['login_result_message'] = null;
         $erfolgreich = false;
+        $user_exists = false;
         if ($mail && $password) {
-            if (db_select_email_and_password($mail, $password)->num_rows > 0) {
+            $user = db_select_email_and_password($mail, $password);
+            if (count($user) > 0) {     //wie bei num_rows nur als Variable gespeichert, damit ich gleich besser auf die ID zugreifen kann
                 //Benutzer existiert so/mail und passwort stimmen überein
                 $erfolgreich = true;
+                $user_exists = true;
+                $id = $user[0]['id']; //man greift auf das erste und einzige Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
+                                        // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
+                inkrementiere_zaehler($id);
+            } else {
+                // Benutzer existiert zwar, aber E-Mail/Passwort stimmen nicht überein, führt also zu einer fehlerhaften Anmeldung
+                $result = db_select_email_and_password($mail, '');
+                if (count($result) > 0) {
+                    $user_exists = true;
+                }
             }
         }
         if ($erfolgreich) {
@@ -30,8 +42,12 @@ class WerbeseiteController
             exit; //Wichtig Skriptbeendung nach Weiterleitung
         }
         else {
+            if ($user_exists){
+                setze_letzten_fehler($mail);
+            }
             $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
             header('Location:/anmeldung');
+            exit();
             return view('hauptseite.pages.anmeldung_page',['Fehlermeldung'=> $_SESSION['login_result_message']]);
 
         }
