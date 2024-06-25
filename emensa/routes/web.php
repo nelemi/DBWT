@@ -26,6 +26,7 @@ return array(
 
     //Anmeldung:
     '/anmeldung' => 'WerbeseiteController@anmeldung',
+    '/anmeldung_verifizieren' => 'WerbeseiteController@check_anmeldung',
 
 
 

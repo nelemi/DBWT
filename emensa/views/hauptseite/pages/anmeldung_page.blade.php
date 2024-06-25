@@ -10,7 +10,7 @@
 
 @section('main')
     <main>
-        <form action="/anmeldung_verfizieren" method="post">
+        <form action="/anmeldung_verifizieren" method="post">
             <label for="email">Ihre E-Mail</label>
             <br>
             <input type="text" id="email" name="email" required>
@@ -26,6 +26,7 @@
 
 @section('footer')
     <footer>
+        <p>{{$Fehlermeldung}}</p>
         <ul>
             <li>(c) E-Mensa GmbH</li>
             <li>Amelie Petersen und Nele Mikkelsen</li>
