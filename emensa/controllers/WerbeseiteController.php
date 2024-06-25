@@ -16,14 +16,17 @@ class WerbeseiteController
         $_SESSION['target'] = 'hauptseite.pages.hauptseite_page';
         $_SESSION['login_result_message'] = null;
         $erfolgreich = false;
-
+        if (db_select_email_and_password($mail, $password)->num_rows > 0){
+            //Benutzer existiert so/mail und passwort stimmen überein
+            $erfolgreich = true;
+        }
         if ($erfolgreich) {
             $_SESSION['login_ok'] = true;
             $target = $_SESSION['target'];
             header('Location:/' . $target);
         }
-    else {$_SESSION['login_result_message'] = 'Name oder Passwort falsch';
-        header('Location:/anmeldung');
+        else {$_SESSION['login_result_message'] = 'Name oder Passwort falsch';
+            header('Location:/anmeldung');
 
         }
         }
