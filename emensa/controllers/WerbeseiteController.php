@@ -20,40 +20,56 @@ class WerbeseiteController
         $erfolgreich = false;
         $user_exists = false;
         if ($mail && $password) {
-            $user = db_select_email_and_password($mail, $password);
-            if (count($user) > 0) {     //wie bei num_rows nur als Variable gespeichert, damit ich gleich besser auf die ID zugreifen kann
-                //Benutzer existiert so/mail und passwort stimmen überein
-                $erfolgreich = true;
-                $user_exists = true;
-                $id = $user[0]['id']; //man greift auf das erste und einzige Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
-                                        // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
-                inkrementiere_zaehler($id);
-            } else {
-                // Benutzer existiert zwar, aber E-Mail/Passwort stimmen nicht überein, führt also zu einer fehlerhaften Anmeldung
-                $result = db_select_email_and_password($mail, '');
-                if (count($result) > 0) {
+            $link = connectdb();
+            mysqli_begin_transaction($link); //Transaktion beginnen
+
+            try { //alles innerhalb von try wird mit derselben Verbindung $link ausgeführt
+                $user = db_select_email_and_password($mail, $password);
+                if (count($user) > 0) {     //wie bei num_rows nur als Variable gespeichert, damit ich gleich besser auf die ID zugreifen kann
+                    //Benutzer existiert so/mail und passwort stimmen überein
+                    $erfolgreich = true;
                     $user_exists = true;
+                    $id = $user[0]['id']; //man greift auf das erste und einzige Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
+                    // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
+                    inkrementiere_zaehler($id);
+                } else {
+                    // Benutzer existiert zwar, aber E-Mail/Passwort stimmen nicht überein, führt also zu einer fehlerhaften Anmeldung
+                    $result = db_select_email_and_password($mail, '');
+                    if (count($result) > 0) {
+                        $user_exists = true;
+                    }
                 }
-            }
-        }
         if ($erfolgreich) {
             $_SESSION['login_ok'] = true;
             $target = $_SESSION['target'];
             header('Location:/' . $target);
             $name_user = db_select_name($mail);
-            return view('hauptseite.pages.hauptseite_page',['Name_benutzer'=> $name_user]);
-        }
-        else {
-            if ($user_exists){
+            mysqli_commit($link); // Nur speichern, wenn alles erfolgreich war
+            exit;
+        } else {
+            if ($user_exists) {
                 setze_letzten_fehler($mail);
             }
             $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
+            mysqli_commit($link); // wieder nur speichern, wenn alle Anweisungen erfolgreich waren, bspw. nicht bei der Fehlermeldung
             header('Location:/anmeldung');
             exit();
-            return view('hauptseite.pages.anmeldung_page',['Fehlermeldung'=> $_SESSION['login_result_message']]);
+            return view('hauptseite.pages.anmeldung_page', ['Fehlermeldung' => $_SESSION['login_result_message']]);
+        }
+        } catch (Exception $e) {
+            mysqli_rollback($link);
+            throw $e;
+            } finally {
+                mysqli_close($link);
+            }
+        } else {
+            $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
+            header('Location:/anmeldung');
+            exit();
+            return view('hauptseite.pages.anmeldung_page', ['Fehlermeldung' => $_SESSION['login_result_message']]);
+        }
+    }
 
-        }
-        }
     public function index(RequestData $request)
     {
         $gericht = db_gerichttabelle_select_all();
