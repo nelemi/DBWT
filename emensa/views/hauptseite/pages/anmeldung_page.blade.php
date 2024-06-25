@@ -10,7 +10,7 @@
 
 @section('main')
     <main>
-        <form action="" method="post">
+        <form action="/anmeldung_verfizieren" method="post">
             <label for="email">Ihre E-Mail</label>
             <br>
             <input type="text" id="email" name="email" required>

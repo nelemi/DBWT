@@ -9,6 +9,25 @@ class WerbeseiteController
 {
         return view ('hauptseite.pages.anmeldung_page');
 }
+    public function check_anmeldung(RequestData $request)
+    {
+        $mail = $rd->query['email'] ?? false;
+        $password = $rd->query['password'] ?? false;
+
+        $_SESSION['target'] = 'hauptseite.pages.hauptseite_page';
+        $_SESSION['login_result_message'] = null;
+        $erfolgreich = false;
+
+        if ($erfolgreich) {
+            $_SESSION['login_ok'] = true;
+            $target = $_SESSION['target'];
+            header('Location:/' . $target);
+        }
+    else {$_SESSION['login_result_message'] = 'Name oder Passwort falsch';
+        header('Location:/anmeldung');
+
+        }
+        }
     public function index(RequestData $request)
     {
         $gericht = db_gerichttabelle_select_all();
