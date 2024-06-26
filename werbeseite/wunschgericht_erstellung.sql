@@ -34,3 +34,8 @@ CREATE TABLE benutzer (
 #M5 Aufgabe 1 3)
 #neuen Benutzer anlegen und gehashtes Passwort mit Salt aus passwort.php einsetzen
 INSERT INTO benutzer (name, email, passwort, admin, anzahlanmeldungen) VALUES ('Amnele', 'admin@emensa.example', '3340634a2cf0e4f8676ad3ba176a18b8ab00d229', true, 0);
+UPDATE benutzer SET passwort = 'a8e28f8ec5a988b7523f2976942c2d3277c28232' WHERE id = 1;
+#weiteren Benutzer hinzufügen
+INSERT INTO benutzer (name, email, passwort, anzahlanmeldungen) VALUES ('Lara', 'lara@emensa.example', 'amelieundnelesindtoll', 0);
+#gehastes Passwort hinzufügen
+UPDATE benutzer SET passwort = '8e685b83f7d1790ad327633a33cd46783ba9ed4a' WHERE id = 2;

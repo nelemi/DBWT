@@ -20,6 +20,8 @@ class WerbeseiteController
         $erfolgreich = false;
         $user_exists = false;
         if ($mail && $password) {
+            $salt = 'dbwt987'; // Wähle salt, gleich für jeden Nutzer
+            $password = sha1($salt . $password); // hashe Passwort
             $link = connectdb();
             mysqli_begin_transaction($link); //Transaktion beginnen
             //Klappt

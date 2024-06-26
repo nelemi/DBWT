@@ -1,6 +1,7 @@
 <?php
-$password = "PasswortzurAnmeldung007";
-$salt = "DbWt2024!";
+$password = "abc";
+$salt = "dbwt987";
 $pwdsalt = sha1($salt . $password);
-echo $pwdsalt;
-//Passwort: 3340634a2cf0e4f8676ad3ba176a18b8ab00d229
+//echo $pwdsalt;
+$pwdsalt2 = sha1($salt . 'amelieundnelesindtoll');
+echo $pwdsalt2;
