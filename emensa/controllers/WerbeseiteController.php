@@ -54,7 +54,7 @@ class WerbeseiteController
                     if ($user_exists) {
                         setze_letzten_fehler($link, $mail);
                     }
-                    // diese Variable in View Objekt aufrufen und an NUtzer ausgeben dann wieder danach löschen
+                    // diese Variable in View Objekt aufrufen und an Nutzer ausgeben dann wieder danach löschen
                     $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
                     mysqli_commit($link); // Fehler speichern
                     header('Location:/anmeldung');
@@ -73,7 +73,12 @@ class WerbeseiteController
             exit();
         }
     }
-
+    public function abmeldung (RequestData $request){
+    header('Location:/anmeldung');
+    session_destroy();
+    session_regenerate_id();
+    exit();
+}
     public function index(RequestData $request)
     {   //$_SESSION['name_user'] = 'Kein Benutzer';
         $gericht = db_gerichttabelle_select_all();

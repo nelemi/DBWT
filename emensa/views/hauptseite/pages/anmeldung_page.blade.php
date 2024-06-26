@@ -26,7 +26,7 @@
 
 @section('footer')
     <footer>
-        <p>{{$Fehlermeldung}}</p>
+        <p>{{$_SESSION['login_result_message']}}</p>
         <ul>
             <li>(c) E-Mensa GmbH</li>
             <li>Amelie Petersen und Nele Mikkelsen</li>

@@ -23,6 +23,7 @@
             <li class="navelement"><a href="#Kontakt" class="nav-link">Kontakt</a></li>
             <li class="navelement"><a href="#Wichtig" class="nav-link">Wichtig für uns</a></li>
             <li class="angemeldet"> „Angemeldet als {{$_SESSION['name_user']}} “</li>
+            <li class="abmelden"><a href="/abmeldung">Hier abmelden</a></li>
         </ul>
     </nav>
 </header>
