@@ -39,24 +39,25 @@ class WerbeseiteController
                         $user_exists = true;
                     }
                 }
-        if ($erfolgreich) {
-            $_SESSION['login_ok'] = true;
-            $target = $_SESSION['target'];
-            header('Location:/' . $target);
-            $name_user = db_select_name($link, $mail);
-            mysqli_commit($link); // Nur speichern, wenn alles erfolgreich war
-            exit;
-        } else {
-            if ($user_exists) {
-                setze_letzten_fehler($link, $mail);
-            }
-            $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
-            mysqli_commit($link); // wieder nur speichern, wenn alle Anweisungen erfolgreich waren, bspw. nicht bei der Fehlermeldung
-            header('Location:/anmeldung');
-            exit();
-            return view('hauptseite.pages.anmeldung_page', ['Fehlermeldung' => $_SESSION['login_result_message']]);
-        }
-        } catch (Exception $e) {
+                if ($erfolgreich) {
+                    $_SESSION['login_ok'] = true;
+                    $target = $_SESSION['target'];
+                    header('Location:/' . $target);
+                    $name_user = db_select_name($link, $mail);
+                    mysqli_commit($link); // Nur speichern, wenn alles erfolgreich war
+                    exit;
+                } else {
+                    if ($user_exists) {
+                        setze_letzten_fehler($link, $mail);
+                    }
+                    $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
+                    mysqli_commit($link); // Fehler speichern
+                    header('Location:/anmeldung');
+                    exit();
+                    return view('hauptseite.pages.anmeldung_page', ['Fehlermeldung' => $_SESSION['login_result_message']]);
+                }
+
+            } catch (Exception $e) {
             mysqli_rollback($link);
             throw $e;
             } finally {
