@@ -1,7 +1,12 @@
 <?php
-$password = "abc";
+
 $salt = "dbwt987";
-$pwdsalt = sha1($salt . $password);
+
+$passwordAmnele = "abc";
+$pwdsalt = sha1($salt . $passwordAmnele);
 //echo $pwdsalt;
-$pwdsalt2 = sha1($salt . 'amelieundnelesindtoll');
-echo $pwdsalt2;
+
+
+$passwordLara = "amelieundnelesindtoll";
+$pwdsalt2 = sha1($salt . "amelieundnelesindtoll"); //Passwörter für beide Benutzer hashen, um in tabelle einzutragen
+//echo $pwdsalt2;

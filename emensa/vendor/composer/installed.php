@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'emensa/mvc',
-        'pretty_version' => 'dev-ac3eb12ab743c0c1f7fa1538586ff366402d472a',
-        'version' => 'dev-ac3eb12ab743c0c1f7fa1538586ff366402d472a',
-        'reference' => 'ac3eb12ab743c0c1f7fa1538586ff366402d472a',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '2fe66f4207bc9b138511241b1fb3054f29eee3ee',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,13 +20,37 @@
             'dev_requirement' => false,
         ),
         'emensa/mvc' => array(
-            'pretty_version' => 'dev-ac3eb12ab743c0c1f7fa1538586ff366402d472a',
-            'version' => 'dev-ac3eb12ab743c0c1f7fa1538586ff366402d472a',
-            'reference' => 'ac3eb12ab743c0c1f7fa1538586ff366402d472a',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '2fe66f4207bc9b138511241b1fb3054f29eee3ee',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'monolog/monolog' => array(
+            'pretty_version' => '3.6.0',
+            'version' => '3.6.0.0',
+            'reference' => '4b18b21a5527a3d5ffdac2fd35d3ab25a9597654',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../monolog/monolog',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/log' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'reference' => 'fe5ea303b0887d5caefd3d431c3e61ad47037001',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../psr/log',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'psr/log-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '3.0.0',
+            ),
         ),
     ),
 );
