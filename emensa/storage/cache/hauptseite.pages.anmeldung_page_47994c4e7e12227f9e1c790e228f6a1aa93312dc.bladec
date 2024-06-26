@@ -13,11 +13,11 @@
  <form action="/anmeldung_verifizieren" method="post">
  <label for="email">Ihre E-Mail</label>
  <br>
- <input type="text" id="email" name="email" required>
+ <input type="email" id="email" name="email" required>
  <br>
- <label for="passwort">Ihr Passwort</label>
+ <label for="password">Ihr Passwort</label>
  <br>
- <input type="text" id="passwort" name="passwort" required>
+ <input type="text" id="password" name="password" required>
  <br>
  <input id="bestätigen" type="submit" name="submit" value="Bestätigen">
  </form>

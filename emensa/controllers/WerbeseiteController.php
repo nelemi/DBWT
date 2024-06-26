@@ -15,7 +15,7 @@ class WerbeseiteController
         $password = $request->query['password'] ?? false;
         $_SESSION['name_user'] = 'Kein Benutzer';
 
-        $_SESSION['target'] = 'hauptseite.pages.hauptseite_page';
+        $_SESSION['target'] = 'hauptseite';
         $_SESSION['login_result_message'] = null;
         $erfolgreich = false;
         $user_exists = false;
@@ -57,7 +57,6 @@ class WerbeseiteController
                     mysqli_commit($link); // Fehler speichern
                     header('Location:/anmeldung');
                     exit();
-                    return view('hauptseite.pages.anmeldung_page', ['Fehlermeldung' => $_SESSION['login_result_message']]);
                 }
 
             } catch (Exception $e) {
@@ -70,7 +69,6 @@ class WerbeseiteController
             $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
             header('Location:/anmeldung');
             exit();
-            return view('hauptseite.pages.anmeldung_page', ['Fehlermeldung' => $_SESSION['login_result_message']]);
         }
     }
 
