@@ -24,17 +24,17 @@ class WerbeseiteController
             mysqli_begin_transaction($link); //Transaktion beginnen
 
             try { //alles innerhalb von try wird mit derselben Verbindung $link ausgeführt
-                $user = db_select_email_and_password($mail, $password);
+                $user = db_select_email_and_password($link, $mail, $password);
                 if (count($user) > 0) {     //wie bei num_rows nur als Variable gespeichert, damit ich gleich besser auf die ID zugreifen kann
                     //Benutzer existiert so/mail und passwort stimmen überein
                     $erfolgreich = true;
                     $user_exists = true;
                     $id = $user[0]['id']; //man greift auf das erste und einzige Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
                     // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
-                    inkrementiere_zaehler($id);
+                    inkrementiere_zaehler($link, $id);
                 } else {
                     // Benutzer existiert zwar, aber E-Mail/Passwort stimmen nicht überein, führt also zu einer fehlerhaften Anmeldung
-                    $result = db_select_email_and_password($mail, '');
+                    $result = db_select_email_and_password($link, $mail, '');
                     if (count($result) > 0) {
                         $user_exists = true;
                     }
@@ -43,7 +43,7 @@ class WerbeseiteController
             $_SESSION['login_ok'] = true;
             $target = $_SESSION['target'];
             header('Location:/' . $target);
-            $name_user = db_select_name($mail);
+            $name_user = db_select_name($link, $mail);
             mysqli_commit($link); // Nur speichern, wenn alles erfolgreich war
             exit;
         } else {
