@@ -15,7 +15,7 @@ class WerbeseiteController
         $password = $request->query['password'] ?? false;
         $_SESSION['name_user'] = 'Kein Benutzer';
 
-        $_SESSION['target'] = 'hauptseite';
+        $_SESSION['target'] = 'hauptseite'; //nur hauptseite verwenden, nicht hauptseite.pages...
         $_SESSION['login_result_message'] = null;
         $erfolgreich = false;
         $user_exists = false;
