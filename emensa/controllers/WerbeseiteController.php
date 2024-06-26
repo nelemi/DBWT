@@ -63,7 +63,7 @@ class WerbeseiteController
             } finally {
                 mysqli_close($link);
             }
-        } else {
+        } else { // Wenn Name und Passwort falsch, dann wird direkt fehler ausgegeben
             $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
             header('Location:/anmeldung');
             exit();
