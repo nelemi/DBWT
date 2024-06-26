@@ -1,8 +1,8 @@
 <?php
 
-$salt = "dbwt987";
+$salt = "dbwt987"; // Salt, das für alle gilt
 
-$passwordAmnele = "abc";
+$passwordAmnele = "abc"; // Passwort, das eingegeben wird
 $pwdsalt = sha1($salt . $passwordAmnele);
 //echo $pwdsalt;
 
