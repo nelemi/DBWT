@@ -22,6 +22,7 @@ class WerbeseiteController
         if ($mail && $password) {
             $link = connectdb();
             mysqli_begin_transaction($link); //Transaktion beginnen
+            //Klappt
 
             try { //alles innerhalb von try wird mit derselben Verbindung $link ausgeführt
                 $user = db_select_email_and_password($link, $mail, $password);
