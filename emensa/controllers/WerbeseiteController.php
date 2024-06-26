@@ -10,10 +10,10 @@ class WerbeseiteController
         return view ('hauptseite.pages.anmeldung_page');
 }
     public function check_anmeldung(RequestData $request)
-    {
+    {   var_dump($request);
         $mail = $request->query['email'] ?? false;
         $password = $request->query['password'] ?? false;
-        $name_user = 'Kein Benutzer';
+        $_SESSION['name_user'] = 'Kein Benutzer';
 
         $_SESSION['target'] = 'hauptseite.pages.hauptseite_page';
         $_SESSION['login_result_message'] = null;
@@ -44,12 +44,14 @@ class WerbeseiteController
                     $target = $_SESSION['target'];
                     header('Location:/' . $target);
                     $name_user = db_select_name($link, $mail);
+                    $_SESSION['name_user'] = $name_user;
                     mysqli_commit($link); // Nur speichern, wenn alles erfolgreich war
                     exit;
                 } else {
                     if ($user_exists) {
                         setze_letzten_fehler($link, $mail);
                     }
+                    // diese Variable in View Objekt aufrufen und an NUtzer ausgeben dann wieder danach löschen
                     $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
                     mysqli_commit($link); // Fehler speichern
                     header('Location:/anmeldung');
@@ -72,7 +74,7 @@ class WerbeseiteController
     }
 
     public function index(RequestData $request)
-    {
+    {   $_SESSION['name_user'] = 'Kein Benutzer';
         $gericht = db_gerichttabelle_select_all();
         $gerichthatallergen = db_gericht_hat_allergen_select_all();
         return view('hauptseite.pages.hauptseite_page', ['gerichte' => $gericht, 'gericht_hat_allergen' => $gerichthatallergen]);

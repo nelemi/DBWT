@@ -281,5 +281,10 @@ SET bildname = '20_suppe.jpg'
 WHERE id = 20;
 
 UPDATE gericht
-SET bildname = '00_image_missing'
+SET bildname = '00_image_missing.jpg'
 WHERE bildname IS NULL;
+
+UPDATE gericht
+SET bildname = '00_image_missing.jpg'
+WHERE bildname = '00_image_missing';
+
