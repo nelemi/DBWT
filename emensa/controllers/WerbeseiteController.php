@@ -29,7 +29,7 @@ class WerbeseiteController
                     //Benutzer existiert so/mail und passwort stimmen überein
                     $erfolgreich = true;
                     $user_exists = true;
-                    $id = $user[0]['id']; //man greift auf das erste und einzige Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
+                    $id = $user[0]['id']; //man greift auf das erste und sowieso EINZIGE Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
                     // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
                     inkrementiere_zaehler($link, $id);
                 } else {
@@ -48,7 +48,7 @@ class WerbeseiteController
             exit;
         } else {
             if ($user_exists) {
-                setze_letzten_fehler($mail);
+                setze_letzten_fehler($link, $mail);
             }
             $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
             mysqli_commit($link); // wieder nur speichern, wenn alle Anweisungen erfolgreich waren, bspw. nicht bei der Fehlermeldung
