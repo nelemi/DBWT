@@ -73,7 +73,7 @@ class WerbeseiteController
     }
 
     public function index(RequestData $request)
-    {   $_SESSION['name_user'] = 'Kein Benutzer';
+    {   //$_SESSION['name_user'] = 'Kein Benutzer';
         $gericht = db_gerichttabelle_select_all();
         $gerichthatallergen = db_gericht_hat_allergen_select_all();
         return view('hauptseite.pages.hauptseite_page', ['gerichte' => $gericht, 'gericht_hat_allergen' => $gerichthatallergen]);
