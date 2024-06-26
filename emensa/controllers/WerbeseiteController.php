@@ -73,6 +73,7 @@ class WerbeseiteController
             exit();
         }
     }
+    // Hier Funktion für Abmeldung, leitet wieder auf Anmeldeseite
     public function abmeldung (RequestData $request){
     header('Location:/anmeldung');
     session_destroy();
