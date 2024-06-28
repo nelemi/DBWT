@@ -6,6 +6,8 @@ const CONFIG_WEBROUTES = "/../routes/web.php"; // like in laravel
 const CONFIG_DB = "/../config/db.php";
 const ROUTER_VERSION = '0.8.2';
 
+
+
 assert_php_version('8.2.0');
 assert_path();
 
@@ -26,6 +28,10 @@ try {
 }
 
 use eftec\bladeone\BladeOne;
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+//Level musste noch extra eingefügt werden an dieser Stelle
+use Monolog\Level;
 
 /* Routing Script for PHP Dev Server */
 $verbosity = VERBOSITY;
@@ -268,7 +274,16 @@ function view($viewname, $viewargs = array())
 
     return $blade->run($viewname, $viewargs);
 }
-
+function logger(): Logger{
+    //neues Logger-Objekt mit dem Namen Logger erstellen
+    $log = new Logger('Logger');
+    //Verzeichnis, in dem die Log-Dateien gespeichert werden
+    $logDir = dirname(__DIR__) . '/storage/logs';
+    //StreamHandler ist verantwortlich für das Schreiben der Log-Einträge in eine Datei
+    //ist im Verzeichnis $logDir
+    $log->pushHandler(new StreamHandler($logDir . '/your.log'));
+    return $log;
+}
 /**
  * let the script die if the php minimum version is not met.
  * @param $minversion

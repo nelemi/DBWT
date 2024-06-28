@@ -10,7 +10,7 @@ class WerbeseiteController
         return view ('hauptseite.pages.anmeldung_page');
 }
     public function check_anmeldung(RequestData $request)
-    {   var_dump($request);
+    {   logger()->info('Anmeldung');
         $mail = $request->query['email'] ?? false;
         $password = $request->query['password'] ?? false;
         $_SESSION['name_user'] = 'Kein Benutzer';
@@ -54,6 +54,8 @@ class WerbeseiteController
                     if ($user_exists) {
                         setze_letzten_fehler($link, $mail);
                     }
+                    //Die Methode heißt warning und nicht warn!!
+                    logger()->warning('fehlgeschlagene Anmeldung');
                     // diese Variable in View Objekt aufrufen und an Nutzer ausgeben dann wieder danach löschen
                     $_SESSION['login_result_message'] = 'Name oder Passwort falsch';
                     mysqli_commit($link); // Fehler speichern
@@ -75,6 +77,7 @@ class WerbeseiteController
     }
     // Hier Funktion für Abmeldung, leitet wieder auf Anmeldeseite
     public function abmeldung (RequestData $request){
+        logger()->info('Abmeldung');
     header('Location:/anmeldung');
     session_destroy();
     session_regenerate_id();
@@ -82,6 +85,7 @@ class WerbeseiteController
 }
     public function index(RequestData $request)
     {   //$_SESSION['name_user'] = 'Kein Benutzer';
+        logger()->info('Hauptseite wurde aufgerufen');
         $gericht = db_gerichttabelle_select_all();
         $gerichthatallergen = db_gericht_hat_allergen_select_all();
         return view('hauptseite.pages.hauptseite_page', ['gerichte' => $gericht, 'gericht_hat_allergen' => $gerichthatallergen]);
