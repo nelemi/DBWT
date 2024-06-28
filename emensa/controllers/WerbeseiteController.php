@@ -34,7 +34,8 @@ class WerbeseiteController
                     $user_exists = true;
                     $id = $user[0]['id']; //man greift auf das erste und sowieso EINZIGE Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
                     // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
-                    inkrementiere_zaehler($link, $id);
+                    inkrementiere_zaehler($link, $id); //M5 Aufgabe 1 aber auskommentiert, wg. Aufgabe 5 (Prozedur)
+
                 } else {
                     // Benutzer existiert zwar, aber E-Mail/Passwort stimmen nicht überein, führt also zu einer fehlerhaften Anmeldung
                     $result = db_select_email_and_password($link, $mail, '');
