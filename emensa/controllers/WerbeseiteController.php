@@ -34,7 +34,6 @@ class WerbeseiteController
                     $id = $user[0]['id']; //man greift auf das erste und sowieso EINZIGE Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
                     // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
                     inkrementiere_zaehler($link, $id); //M5 Aufgabe 1 aber auskommentiert, wg. Aufgabe 5 (Prozedur)
-
                 }
                 if ($erfolgreich) {
                     $_SESSION['login_ok'] = true;

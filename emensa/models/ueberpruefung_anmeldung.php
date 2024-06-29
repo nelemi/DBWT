@@ -18,7 +18,7 @@ function inkrementiere_zaehler($link, $id) { // jetzt mit Prozeduraufruf
 
 }
 
-function setze_letzten_fehler($link, $mail) {//vorher $mail anstatt id übergeben, aber hat nicht funktioniert
+function setze_letzten_fehler($link, $mail) {
     $sql5 = "SELECT email FROM benutzer WHERE email = '$mail' ";
     $result5 = mysqli_query($link, $sql5);
     if (mysqli_num_rows($result5) > 0) {
