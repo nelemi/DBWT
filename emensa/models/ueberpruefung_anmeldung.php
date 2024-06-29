@@ -7,16 +7,14 @@ function db_select_email_and_password($link, $mail, $password) { //Jetzt immer L
 }
 
 function inkrementiere_zaehler($link, $id) { // jetzt mit Prozeduraufruf
-    // $sql4 = "UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1, letzteanmeldung = NOW() WHERE id = '$id' "; vorher
+    // vorher
+    //$sql4 = "UPDATE benutzer SET anzahlanmeldungen = anzahlanmeldungen + 1, letzteanmeldung = NOW() WHERE id = '$id' ";
+
     $sql4 = "UPDATE benutzer SET letzteanmeldung = NOW() WHERE id = '$id' ";
     mysqli_query($link, $sql4);
 
-    $sql_procedure = "CALL inkrementiere_anmeldungen($id, @anzahlanmeldungen)";
+    $sql_procedure = "CALL inkrementiere_anmeldungen($id)"; //Prozedur aufrufen
     mysqli_query($link, $sql_procedure);
-
-    $result_procedure = mysqli_query($link, "SELECT @anzahlanmeldungen AS anzahlanmeldungen;");
-    $row = mysqli_fetch_assoc($result_procedure);
-    return $row['anzahlanmeldungen'];
 
 }
 
