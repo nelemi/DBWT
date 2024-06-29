@@ -31,17 +31,10 @@ class WerbeseiteController
                 if (count($user) > 0) {     //wie bei num_rows nur als Variable gespeichert, damit ich gleich besser auf die ID zugreifen kann
                     //Benutzer existiert so/mail und passwort stimmen überein
                     $erfolgreich = true;
-                    $user_exists = true;
                     $id = $user[0]['id']; //man greift auf das erste und sowieso EINZIGE Element (Index 0) im Rückgabe-Array der Funktion db_select_email_and_passwort
                     // mit der entsprechenden ID zu, um an alle Einträge zu gelangen
                     inkrementiere_zaehler($link, $id); //M5 Aufgabe 1 aber auskommentiert, wg. Aufgabe 5 (Prozedur)
 
-                } else {
-                    // Benutzer existiert zwar, aber E-Mail/Passwort stimmen nicht überein, führt also zu einer fehlerhaften Anmeldung
-                    $result = db_select_email_and_password($link, $mail, '');
-                    if (count($result) > 0) {
-                        $user_exists = true;
-                    }
                 }
                 if ($erfolgreich) {
                     $_SESSION['login_ok'] = true;
@@ -52,9 +45,7 @@ class WerbeseiteController
                     mysqli_commit($link); // Nur speichern, wenn alles erfolgreich war
                     exit;
                 } else {
-                    if ($user_exists) {
-                        setze_letzten_fehler($link, $mail);
-                    }
+                    setze_letzten_fehler($link, $mail);
                     //Die Methode heißt warning und nicht warn!!
                     logger()->warning('fehlgeschlagene Anmeldung');
                     // diese Variable in View Objekt aufrufen und an Nutzer ausgeben dann wieder danach löschen

@@ -18,9 +18,15 @@ function inkrementiere_zaehler($link, $id) { // jetzt mit Prozeduraufruf
 
 }
 
-function setze_letzten_fehler($link, $mail) {
-    $sql5 = "UPDATE benutzer SET letzterfehler = NOW() WHERE email = '$mail'";
-    mysqli_query($link, $sql5);
+function setze_letzten_fehler($link, $mail) {//vorher $mail anstatt id übergeben, aber hat nicht funktioniert
+    $sql5 = "SELECT email FROM benutzer WHERE email = '$mail' ";
+    $result5 = mysqli_query($link, $sql5);
+    if (mysqli_num_rows($result5) > 0) {
+        $sql6 = "UPDATE benutzer SET letzterfehler = NOW() WHERE email = '$mail'"; //hier auch $mail eigentlich
+        mysqli_query($link, $sql6);
+    } else {
+        echo "E-Mail-Adresse nicht in der Datenbank gefunden: " . $mail;
+    }
 }
 
 function db_select_name($link, $mail){
