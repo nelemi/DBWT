@@ -21,7 +21,7 @@ function inkrementiere_zaehler($link, $id) { // jetzt mit Prozeduraufruf
 function setze_letzten_fehler($link, $mail) {
     $sql5 = "SELECT email FROM benutzer WHERE email = '$mail' ";
     $result5 = mysqli_query($link, $sql5);
-    if (mysqli_num_rows($result5) > 0) {
+    if (mysqli_num_rows($result5) > 0) {  // überprüfe, ob Nutzer mit der Email vorhanden
         $sql6 = "UPDATE benutzer SET letzterfehler = NOW() WHERE email = '$mail'"; //hier auch $mail eigentlich
         mysqli_query($link, $sql6);
     } else {

@@ -44,3 +44,7 @@
 [2024-06-29T11:39:55.849696+00:00] Logger.WARNING: fehlgeschlagene Anmeldung [] []
 [2024-06-29T11:40:28.836483+00:00] Logger.INFO: Anmeldung [] []
 [2024-06-29T11:40:28.839536+00:00] Logger.WARNING: fehlgeschlagene Anmeldung [] []
+[2024-07-01T16:25:01.661460+00:00] Logger.INFO: Anmeldung [] []
+[2024-07-01T16:25:01.673882+00:00] Logger.WARNING: fehlgeschlagene Anmeldung [] []
+[2024-07-01T16:26:07.322200+00:00] Logger.INFO: Anmeldung [] []
+[2024-07-01T16:26:07.352400+00:00] Logger.INFO: Hauptseite wurde aufgerufen [] []
